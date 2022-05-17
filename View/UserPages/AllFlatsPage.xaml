@@ -1,0 +1,59 @@
+﻿<Page x:Class="FlatRental.View.UserPages.AllFlatsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:FlatRental.ViewModel"
+      mc:Ignorable="d" 
+      d:DesignHeight="570" d:DesignWidth="920"
+      Title="AllFlatsPage">
+
+    <Page.DataContext>
+        <local:AllFlatsVM/>
+    </Page.DataContext>
+
+    <Page.Resources>
+        <DataTemplate x:Key="ListTemplate">
+            <Border CornerRadius="8" BorderThickness="0">
+                <StackPanel>
+                    <Border Width="100" Height="100" CornerRadius="8" Margin="5">
+                        <Border.Effect>
+                            <DropShadowEffect ShadowDepth="1" Color="White"/>
+                        </Border.Effect>
+                        <Border.Background>
+                            <ImageBrush ImageSource="{Binding Image}"/>
+                        </Border.Background>
+                    </Border>
+                    <TextBlock Margin="5" Text="{Binding Price, StringFormat={}{0:C}}" FontSize="17" FontFamily="Franklin Gothic Medium" Foreground="White"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{StaticResource metro_svg}" MaxHeight="20" MaxWidth="20"/>
+                        <TextBlock Margin="5 0" Text="{Binding Metro}" FontSize="15" Foreground="White"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+
+        
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Test" HorizontalAlignment="Center" Margin="10" FontSize="28" VerticalAlignment="Center"/>
+        <StackPanel Grid.Row="1">
+            <ListView ScrollViewer.HorizontalScrollBarVisibility="Hidden" 
+                      ItemsSource="{Binding FlatList}" ItemTemplate="{StaticResource ResourceKey=ListTemplate}" SelectedItem="{Binding SelectedFlat}">
+                <!--<ListView.Style>
+                    
+                </ListView.Style>-->
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+            </ListView>
+        </StackPanel>
+    </Grid>
+</Page>

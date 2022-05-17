@@ -1,0 +1,137 @@
+﻿<Page x:Class="FlatRental.View.UserPages.FlatPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:FlatRental.ViewModel"
+      mc:Ignorable="d" 
+      d:DesignHeight="570" d:DesignWidth="920"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      Title="FlatPage">
+
+    <Page.DataContext>
+        <local:FlatPageVM/>
+    </Page.DataContext>
+
+
+    <Page.Resources>
+        <DataTemplate x:Key="ListTemplate">
+            <Border CornerRadius="8" BorderThickness="0" Background="#303233">
+                <StackPanel Margin="20">
+                    <Label Content="{Binding User.Name}" FontSize="18" Foreground="#00CC66" FontWeight="Medium"/>
+                    <TextBlock Text="{Binding Text}" FontSize="18" Foreground="White" TextWrapping="Wrap"/>
+                </StackPanel>
+                    
+                
+            </Border>
+        </DataTemplate>
+    </Page.Resources>
+
+    <Grid>
+
+
+        <ScrollViewer>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+
+                <Border MinWidth="460" MinHeight="280" CornerRadius="8" Margin="5" HorizontalAlignment="Left">
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="1" Color="White"/>
+                    </Border.Effect>
+                    <Border.Background>
+                        <ImageBrush ImageSource="{Binding CurrentFlat.Image}"/>
+                    </Border.Background>
+                </Border>
+
+                <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left">
+                    <TextBlock Text="{Binding CurrentFlat.Price, StringFormat={}{0:C} за месяц}" Foreground="White" FontSize="18"/>
+
+                    <StackPanel Orientation="Horizontal" Margin="0 20">
+                        <Image Source="{StaticResource metro_svg}" MaxHeight="40" MaxWidth="40" VerticalAlignment="Center"/>
+                        <TextBlock Margin="5 0" Text="{Binding CurrentFlat.Metro}" FontSize="18" Foreground="White" VerticalAlignment="Center"/>
+                    </StackPanel>
+
+                    <Button Content="Оставить заявку" Style="{StaticResource MaterialDesignFlatMidBgButton}" Background="#00CC66" Foreground="White" Margin="0 20 0 0"
+                            Height="53" Width="300" materialDesign:ButtonAssist.CornerRadius="8" FontSize="18" BorderThickness="0" HorizontalAlignment="Left" Command="{Binding OpenRentalForm}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1">
+                    
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
+                    <Label Content="Характеристики" Foreground="#00CC66" FontSize="28" FontWeight="Medium" Margin="0 20 0 0"/>
+                    <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                        <Label Content="Метро:" VerticalAlignment="Center" Foreground="White" FontSize="18"/>
+                        <TextBlock Text="{Binding CurrentFlat.Metro}" VerticalAlignment="Center" Foreground="White" FontSize="18"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                        <Label Content="Район:" VerticalAlignment="Center" Foreground="White" FontSize="18"/>
+                        <TextBlock Text="{Binding CurrentFlat.District}" VerticalAlignment="Center" Foreground="White" FontSize="18"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                        <Label Content="Микрорайон:" VerticalAlignment="Center" Foreground="White" FontSize="18"/>
+                        <TextBlock Text="{Binding CurrentFlat.Мicrodistrict}" VerticalAlignment="Center" Foreground="White" FontSize="18"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                        <Label Content="Кол-во комнат:" VerticalAlignment="Center" Foreground="White" FontSize="18"/>
+                        <TextBlock Text="{Binding CurrentFlat.NumberOfRooms}" VerticalAlignment="Center" Foreground="White" FontSize="18"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                        <Label Content="Тип аренды:" VerticalAlignment="Center" Foreground="White" FontSize="18"/>
+                        <TextBlock Text="{Binding CurrentFlat.RentalType}" VerticalAlignment="Center" Foreground="White" FontSize="18"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                        <Label Content="Площадь:" VerticalAlignment="Center" Foreground="White" FontSize="18"/>
+                        <TextBlock Text="{Binding CurrentFlat.Area, StringFormat={}{0} м²}" VerticalAlignment="Center" Foreground="White" FontSize="18"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                        <Label Content="Туалет:" VerticalAlignment="Center" Foreground="White" FontSize="18"/>
+                        <TextBlock Text="{Binding CurrentFlat.Toilet}" VerticalAlignment="Center" Foreground="White" FontSize="18"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                        <Label Content="Балкон:" VerticalAlignment="Center" Foreground="White" FontSize="18"/>
+                        <TextBlock Text="{Binding CurrentFlat.Balcony}" VerticalAlignment="Center" Foreground="White" FontSize="18"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                        <Label Content="Этаж:" VerticalAlignment="Center" Foreground="White" FontSize="18"/>
+                        <TextBlock Text="{Binding CurrentFlat.Floor}" VerticalAlignment="Center" Foreground="White" FontSize="18"/>
+                    </StackPanel>
+                    <StackPanel Margin="0 10 0 0">
+                        <Label Content="Описание" Foreground="#00CC66" FontSize="28" FontStyle="Normal"/>
+                        <TextBlock Text="{Binding CurrentFlat.Description}" VerticalAlignment="Center" Foreground="White" FontSize="18" TextWrapping="Wrap"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1" Margin="0 20 0 0">
+                        <Label Content="Отзывы" Foreground="#00CC66" FontSize="28"/>
+
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox x:Name="ReviewTextBox" Width="500" Foreground="White" Style="{StaticResource MaterialDesignFilledTextBox}" TextWrapping="Wrap" MaxLength="3500" FontSize="18" materialDesign:TextFieldAssist.CharacterCounterVisibility="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxTextCountComboBox, Converter={StaticResource BooleanToVisibilityConverter}}" 
+                                     materialDesign:HintAssist.Hint="Оставьте свой отзыв" Margin="0 20 0 0" BorderBrush="White" CaretBrush="White" Text="{Binding Comment}"/>
+                                <Button Content="Отправить" Margin="10 0 0 0" materialDesign:ButtonAssist.CornerRadius="8" FontSize="18" BorderThickness="0" Command="{Binding AddComment}"
+                                    Background="#00CC66" Foreground="White" Style="{StaticResource MaterialDesignFlatMidBgButton}" VerticalAlignment="Bottom"/>
+                            </StackPanel>
+                            <ListView ScrollViewer.HorizontalScrollBarVisibility="Hidden" Margin="0 30 0 0"
+                      ItemsSource="{Binding ReviewList}" ItemTemplate="{StaticResource ResourceKey=ListTemplate}" Style="{StaticResource MaterialDesignCardsListBox}"/>
+
+                        </StackPanel>
+                        
+                        
+
+
+                    </StackPanel>
+                </StackPanel>
+                
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Page>

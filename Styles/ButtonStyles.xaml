@@ -1,0 +1,281 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Minimize App Button Style -->
+    <ImageBrush x:Key="minimize_def"
+                ImageSource="../Assets/minimize_def.png"
+                Stretch="None"/>
+
+    <ImageBrush x:Key="minimize_mo"
+                ImageSource="../Assets/minimize_mo.png"
+                Stretch="None"/>
+
+    <Style x:Key="MinimizeAppStyle"
+           TargetType="{x:Type Button}">
+
+        <Setter Property="Height"
+                Value="25"/>
+        <Setter Property="Width"
+                Value="25"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border"
+                            BorderThickness="0"
+                            Background="{StaticResource ResourceKey=minimize_def}">
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+                            <Setter Property="Background"
+                                    TargetName="border"
+                                    Value="{StaticResource ResourceKey=minimize_mo}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed"
+                                 Value="True">
+                            <Setter Property="Background"
+                                    TargetName="border"
+                                    Value="{StaticResource ResourceKey=minimize_mo}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    
+    <!-- Maximize App Button Style -->
+    <ImageBrush x:Key="maximize_def"
+                ImageSource="../Assets/maximize_def.png"
+                Stretch="None"/>
+
+    <ImageBrush x:Key="maximize_mo"
+                ImageSource="../Assets/maximize_mo.png"
+                Stretch="None"/>
+
+    <Style x:Key="MaximizeAppStyle"
+           TargetType="{x:Type Button}">
+
+        <Setter Property="Height"
+                Value="25"/>
+        <Setter Property="Width"
+                Value="25"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border"
+                            BorderThickness="0"
+                            Background="{StaticResource ResourceKey=maximize_def}">
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+                            <Setter Property="Background"
+                                    TargetName="border"
+                                    Value="{StaticResource ResourceKey=maximize_mo}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed"
+                                 Value="True">
+                            <Setter Property="Background"
+                                    TargetName="border"
+                                    Value="{StaticResource ResourceKey=maximize_mo}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Close App Button Style -->
+    <ImageBrush x:Key="close_def"
+                ImageSource="../Assets/shutdown_def.png"
+                Stretch="None"/>
+
+    <ImageBrush x:Key="close_mo"
+                ImageSource="../Assets/shutdown_mo.png"
+                Stretch="None"/>
+
+    <Style x:Key="CloseAppStyle"
+           TargetType="{x:Type Button}">
+
+        <Setter Property="Height"
+                Value="25"/>
+        <Setter Property="Width"
+                Value="25"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border"
+                            BorderThickness="0"
+                            Background="{StaticResource ResourceKey=close_def}">
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+                            <Setter Property="Background"
+                                    TargetName="border"
+                                    Value="{StaticResource ResourceKey=close_mo}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed"
+                                 Value="True">
+                            <Setter Property="Background"
+                                    TargetName="border"
+                                    Value="{StaticResource ResourceKey=close_mo}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Hamburger Menu Button Style -->
+    <ImageBrush x:Key="ham_menu_def"
+                ImageSource="../Assets/hamburger_icon.png"
+                Stretch="None"/>
+
+    <ImageBrush x:Key="ham_menu_mo"
+                ImageSource="../Assets/hamburger_mo.png"
+                Stretch="None"/>
+
+    <Style x:Key="HamMenuStyle"
+           TargetType="{x:Type Button}">
+        <Setter Property="Height"
+                Value="25"/>
+        <Setter Property="Width"
+                Value="25"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border"
+                            BorderThickness="0"
+                            Background="{StaticResource ResourceKey=ham_menu_def}"/>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+                            <Setter Property="Background"
+                                    TargetName="border"
+                                    Value="{StaticResource ResourceKey=ham_menu_mo}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed"
+                                 Value="True">
+                            <Setter Property="Background"
+                                    TargetName="border"
+                                     Value="{StaticResource ResourceKey=ham_menu_mo}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Hamburger Menu Panel Style -->
+    <Style x:Key="PanelStyle"
+           TargetType="Border">
+        <Setter Property="Width"
+                Value="220"/>
+        <Setter Property="Background"
+                Value="#303233"/>
+        <Setter Property="HorizontalAlignment"
+                Value="Left"/>
+        <Setter Property="CornerRadius"
+                Value="8, 0, 0, 8"/>
+    </Style>
+
+    <!-- Hamburger Menu Close Button Style -->
+    <ImageBrush x:Key="close_panel_def"
+                ImageSource="../Assets/close_def.png"
+                Stretch="None"/>
+
+    <ImageBrush x:Key="close_panel_mo"
+                ImageSource="../Assets/close_mo.png"
+                Stretch="None"/>
+
+    <Style x:Key="ClosePanelStyle"
+           TargetType="{x:Type Button}">
+
+        <Setter Property="Height"
+                Value="25"/>
+        <Setter Property="Width"
+                Value="25"/>
+        <Setter Property="HorizontalAlignment"
+                Value="Right" />
+        <Setter Property="VerticalAlignment"
+                Value="Top"/>
+        <Setter Property="Margin"
+                Value="0, 10, 10, 0"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border"
+                            BorderThickness="0"
+                            Background="{StaticResource ResourceKey=close_panel_def}">
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+                            <Setter Property="Background"
+                                    TargetName="border"
+                                    Value="{StaticResource ResourceKey=close_panel_mo}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed"
+                                 Value="True">
+                            <Setter Property="Background"
+                                    TargetName="border"
+                                    Value="{StaticResource ResourceKey=close_panel_mo}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Button In Hamburger Menu Style -->
+    <Style x:Key="MenuRadioButtonStyle" TargetType="{x:Type RadioButton}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RadioButton}">
+                    <Border x:Name="menuButton"  Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="45"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Selected  -->
+                            <Border x:Name="btnSelected" Grid.ColumnSpan="2"  CornerRadius="4" Width="260" HorizontalAlignment="Right"/>
+
+                            <!-- Indicator -->
+                            <Rectangle Name="Indicator" HorizontalAlignment="Left" Width="4" Height="40" VerticalAlignment="Center" RadiusX="2" RadiusY="2"/>
+
+                            <!-- Text -->
+                            <TextBlock x:Name="txtName" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15 0 0 0"
+                                                Grid.Column="1" Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}"
+                                                FontWeight="{TemplateBinding FontWeight}"
+                                                FontSize="{TemplateBinding FontSize}"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="txtName" Property="Foreground" Value="#00CC66"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="Indicator" Property="Fill" Value="#00CC66"/>
+                            <Setter TargetName="Indicator" Property="Height" Value="20"/>
+                            <Setter TargetName="btnSelected" Property="Background" Value="#2A2C2D"/>
+                            <Setter TargetName="txtName" Property="Foreground" Value="#00CC66"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

@@ -1,0 +1,48 @@
+﻿<Page x:Class="FlatRental.View.AdminPages.OrdersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:FlatRental.ViewModel"
+      mc:Ignorable="d" 
+      d:DesignHeight="570" d:DesignWidth="920"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      Title="OrdersPage">
+
+    <Page.DataContext>
+        <local:OrdersVM/>
+    </Page.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <DataGrid x:Name="FlatsDataGrid" Style="{StaticResource MaterialDesignDataGrid}" ItemsSource="{Binding LeaseList}" AutoGenerateColumns="False"
+                  IsReadOnly="True" ColumnWidth="*" Background="White" CanUserResizeColumns="False" CanUserReorderColumns="False" SelectedItem="{Binding SelectedOrder}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер заказа" Binding="{Binding LeaseId}"/>
+                <DataGridTextColumn Header="ID квартиры" Binding="{Binding FlatId}"/>
+                <DataGridTextColumn x:Name="User" Header="ID заказчика" Binding="{Binding UserId}"/>
+                <DataGridTextColumn Header="Начало аренды" Binding="{Binding StartDate}"/>
+                <DataGridTextColumn Header="Конец аренды" Binding="{Binding EndDate}"/>
+                <DataGridTextColumn Header="Сумма" Binding="{Binding TotalSum}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button Content="Изменить" Style="{StaticResource MaterialDesignFlatMidBgButton}" BorderThickness="0" FontSize="18" 
+                    Background="#00CC66" Foreground="White" HorizontalAlignment="Center" materialDesign:ButtonAssist.CornerRadius="8"
+                    Command="{Binding OpenEditFlatFormCommand}"/>
+            <Button Content="Удалить" Grid.Column="1" Style="{StaticResource MaterialDesignFlatMidBgButton}" BorderThickness="0" FontSize="18" 
+                    Background="#00CC66" Foreground="White" HorizontalAlignment="Center" Command="{Binding DeleteItemCommand}"
+                    materialDesign:ButtonAssist.CornerRadius="8"/>
+        </Grid>
+    </Grid>
+</Page>

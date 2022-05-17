@@ -1,0 +1,22 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- Metro Icon -->
+    <DrawingImage x:Key="metro_svg">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="M0,0 V20 H20 V0 H0 Z">
+                <GeometryDrawing Brush="#FFC72A3D" Geometry="F0 M20,20z M0,0z M11.292,8L10.0011,9.59707 8.64903,8 5,8 5.01787,12 8.57143,12 10.0089,13.6333 11.3929,12 15,12 15,8 11.292,8z" />
+                <GeometryDrawing>
+                    <GeometryDrawing.Pen>
+                        <Pen Brush="#FFC72A3D" Thickness="1" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+                    </GeometryDrawing.Pen>
+                    <GeometryDrawing.Geometry>
+                        <EllipseGeometry RadiusX="7.8333" RadiusY="7.8333" Center="10,10.0001" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+    
+    
+</ResourceDictionary>
