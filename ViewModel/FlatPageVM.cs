@@ -1,5 +1,6 @@
 ﻿using FlatRental.DataModel;
 using FlatRental.Model;
+using FlatRental.Model.Repository;
 using FlatRental.View.UserPages;
 using System;
 using System.Collections.Generic;
@@ -13,8 +14,8 @@ namespace FlatRental.ViewModel
 {
     public class FlatPageVM : ObservableObject
     {
-        private ObservableCollection<Review> _reviewList;
-        public ObservableCollection<Review> ReviewList
+        private ObservableCollection<UserReview> _reviewList;
+        public ObservableCollection<UserReview> ReviewList
         {
             get { return _reviewList; }
             set
@@ -24,19 +25,18 @@ namespace FlatRental.ViewModel
             }
         }
 
-        public Dictionary<User, Review> ReviewDictionary;
-
-        
+        private UnitOfWork _unitOfWork;
 
         public FlatPageVM() { }
 
         public FlatPageVM(AllFlatsVM allFlats)
         {
             CurrentFlat = allFlats.SelectedFlat;
-            ReviewList = new ObservableCollection<Review>(FLAT_RENTALContext.GetContext().Reviews.Where(p => p.FlatId == CurrentFlat.FlatId));
-        }
 
-        public User User { get; set; } = CurrentUser.GetInstance();
+            _unitOfWork = new UnitOfWork();
+
+            ReviewList = _unitOfWork.Reviews.GetUserReviewAboutFlat(CurrentFlat);
+        }
 
         private Flat _currentFlat;
         public Flat CurrentFlat
@@ -63,34 +63,35 @@ namespace FlatRental.ViewModel
             }
         }
 
-        private string? _comment;
-        public string? Comment
+        private string? _review;
+        public string? Review
         {
-            get { return _comment; }
+            get { return _review; }
             set
             {
-                _comment = value;
+                _review = value;
                 OnPropertyChanged("Comment");
             }
         }
 
-        private ICommand _addComment;
-        public ICommand AddComment
+        private ICommand _addReview;
+        public ICommand AddReview
         {
             get
             {
-                return _addComment ?? (_addComment = new RelayCommand(obj =>
+                return _addReview ?? (_addReview = new RelayCommand(obj =>
                 {
                     Review review = new Review();
                     review.DateOfReview = DateTime.Now;
                     review.FlatId = CurrentFlat.FlatId;
-                    review.UserId = User.UserId;
-                    review.Text = Comment;
+                    review.UserId = CurrentUser.GetInstance().UserId;
+                    review.Text = Review;
 
-                    FLAT_RENTALContext.GetContext().Reviews.Add(review);
-                    FLAT_RENTALContext.GetContext().SaveChanges();
+                    _unitOfWork.Reviews.Create(review);
+                    _unitOfWork.Save();
 
-                    ReviewList = new ObservableCollection<Review>(FLAT_RENTALContext.GetContext().Reviews.Where(p => p.FlatId == CurrentFlat.FlatId));
+                    ReviewList = _unitOfWork.Reviews.GetUserReviewAboutFlat(CurrentFlat);
+                    Review = null;
                 }));
             }
         }

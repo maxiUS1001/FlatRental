@@ -1,5 +1,6 @@
 ﻿using FlatRental.DataModel;
 using FlatRental.Model;
+using FlatRental.Model.Repository;
 using FlatRental.View;
 using FlatRental.View.AdminPages;
 using System;
@@ -18,6 +19,8 @@ namespace FlatRental.ViewModel
     {
         private Flat _flat;
         private EditFlatsVM _editFlatsModel;
+
+        private UnitOfWork _unitOfWork;
 
         public UpdateFlatsVM() { }
 
@@ -38,6 +41,8 @@ namespace FlatRental.ViewModel
             Price = flat.Price;
             Description = flat.Description;
             Image = flat.Image;
+
+            _unitOfWork = new UnitOfWork();
         }
 
         private string? _metro;
@@ -249,9 +254,10 @@ namespace FlatRental.ViewModel
 
                         if (Validation.CheckValid(_flat))
                         {
-                            FLAT_RENTALContext.GetContext().Flats.Update(_flat);
-                            FLAT_RENTALContext.GetContext().SaveChanges();
-                            _editFlatsModel.FlatList = new ObservableCollection<Flat>(FLAT_RENTALContext.GetContext().Flats.ToList());
+                            _unitOfWork.Flats.Update(_flat);
+                            _unitOfWork.Save();
+
+                            _editFlatsModel.FlatList = new ObservableCollection<Flat>(_unitOfWork.Flats.GetAllItems());
                             var result = new CustomMessageBox("Квартира изменена",
                                             MessageType.Success,
                                             MessageButtons.Ok).ShowDialog();

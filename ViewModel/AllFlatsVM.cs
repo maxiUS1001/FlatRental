@@ -1,5 +1,6 @@
 ﻿using FlatRental.DataModel;
 using FlatRental.Model;
+using FlatRental.Model.Repository;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,6 +15,7 @@ namespace FlatRental.ViewModel
     {
         public ObservableCollection<Flat> FlatList { get; set; }
         private MainUserWindowVM _mainUser;
+        private UnitOfWork _unitOfWork;
 
         private Page _flatPage; 
 
@@ -21,7 +23,9 @@ namespace FlatRental.ViewModel
 
         public AllFlatsVM(MainUserWindowVM mainUser)
         {          
-            FlatList = new ObservableCollection<Flat>(FLAT_RENTALContext.GetContext().Flats);
+            _unitOfWork = new UnitOfWork();
+
+            FlatList = new ObservableCollection<Flat>(_unitOfWork.Flats.GetAllItems());
             
             _flatPage = new View.UserPages.FlatPage();
 

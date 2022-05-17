@@ -9,12 +9,18 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 
 using Microsoft.AspNet.Identity;
+using FlatRental.Model.Repository;
 
 namespace FlatRental.ViewModel
 {
     public class RegisterWindowVM
     {
-        public RegisterWindowVM() { }
+        private UnitOfWork _unitOfWork;
+
+        public RegisterWindowVM() 
+        {
+            _unitOfWork = new UnitOfWork();
+        }
 
         private ICommand _addUserCommand;
         public ICommand AddUserCommand
@@ -39,8 +45,8 @@ namespace FlatRental.ViewModel
                             IPasswordHasher passwordHasher = new PasswordHasher();
                             user.Password = passwordHasher.HashPassword(user.Password);
 
-                            FLAT_RENTALContext.GetContext().Users.Add(user);
-                            FLAT_RENTALContext.GetContext().SaveChanges();
+                            _unitOfWork.Users.Create(user);
+                            _unitOfWork.Save();
 
                             var result = new CustomMessageBox("Вы зарегистрировались",
                                         MessageType.Success,

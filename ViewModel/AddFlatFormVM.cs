@@ -13,18 +13,22 @@ using System.Windows.Input;
 
 
 using System.Diagnostics;
+using FlatRental.Model.Repository;
 
 namespace FlatRental.ViewModel
 {
     public class AddFlatFormVM : ObservableObject
     {
         private EditFlatsVM _editFlatsModel;
+        private UnitOfWork _unitOfWork;
 
         public AddFlatFormVM() { }
 
         public AddFlatFormVM(EditFlatsVM editFlatsModel) 
         {
             _editFlatsModel = editFlatsModel;
+
+            _unitOfWork = new UnitOfWork();
         }
 
         //Close form
@@ -70,10 +74,10 @@ namespace FlatRental.ViewModel
 
                         if (Validation.CheckValid(flat))
                         {
-                            FLAT_RENTALContext.GetContext().Flats.Add(flat);
-                            FLAT_RENTALContext.GetContext().SaveChanges();
+                            _unitOfWork.Flats.Create(flat);
+                            _unitOfWork.Save();
                             
-                            _editFlatsModel.FlatList = new ObservableCollection<Flat>(FLAT_RENTALContext.GetContext().Flats.ToList());                          
+                            _editFlatsModel.FlatList = new ObservableCollection<Flat>(_unitOfWork.Flats.GetAllItems());                          
                             
                             var result = new CustomMessageBox("Квартира добавлена",
                                         MessageType.Success,

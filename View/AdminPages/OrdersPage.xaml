@@ -25,9 +25,9 @@
                 <DataGridTextColumn Header="Номер заказа" Binding="{Binding LeaseId}"/>
                 <DataGridTextColumn Header="ID квартиры" Binding="{Binding FlatId}"/>
                 <DataGridTextColumn x:Name="User" Header="ID заказчика" Binding="{Binding UserId}"/>
-                <DataGridTextColumn Header="Начало аренды" Binding="{Binding StartDate}"/>
-                <DataGridTextColumn Header="Конец аренды" Binding="{Binding EndDate}"/>
-                <DataGridTextColumn Header="Сумма" Binding="{Binding TotalSum}"/>
+                <DataGridTextColumn Header="Начало аренды" Binding="{Binding StartDate, StringFormat={}{0:d}}"/>
+                <DataGridTextColumn Header="Конец аренды" Binding="{Binding EndDate, StringFormat={}{0:d}}"/>
+                <DataGridTextColumn Header="Сумма" Binding="{Binding TotalSum, StringFormat={}{0:F2}}"/>
             </DataGrid.Columns>
         </DataGrid>
 

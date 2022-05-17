@@ -24,9 +24,9 @@
                     </ResourceDictionary.MergedDictionaries>
 
                     <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="#00CC66"/>
-                    <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="#00CC66"/>
+                    <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="White"/>
                     <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#00CC66"/>
-                    <SolidColorBrush x:Key="PrimaryHueMidForegroundBrush" Color="#00CC66"/>
+                    <SolidColorBrush x:Key="PrimaryHueMidForegroundBrush" Color="White"/>
                     <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="#00CC66"/>
                     <SolidColorBrush x:Key="PrimaryHueDarkForegroundBrush" Color="#00CC66"/>
                 </ResourceDictionary>

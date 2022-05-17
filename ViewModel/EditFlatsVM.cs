@@ -1,5 +1,6 @@
 ﻿using FlatRental.DataModel;
 using FlatRental.Model;
+using FlatRental.Model.Repository;
 using FlatRental.View;
 using FlatRental.View.AdminPages;
 using System;
@@ -28,9 +29,13 @@ namespace FlatRental.ViewModel
             }
         }
 
+        private UnitOfWork _unitOfWork;
+
         public EditFlatsVM() 
         {
-            FlatList = new ObservableCollection<Flat>(FLAT_RENTALContext.GetContext().Flats.ToList());
+            _unitOfWork = new UnitOfWork();
+
+            FlatList = new ObservableCollection<Flat>(_unitOfWork.Flats.GetAllItems());
            
             if (FlatList.Count != 0)
                 SelectedFlat = FlatList.First();
@@ -60,9 +65,10 @@ namespace FlatRental.ViewModel
                 {
                     try
                     {
-                        FLAT_RENTALContext.GetContext().Flats.Remove(SelectedFlat);
-                        FLAT_RENTALContext.GetContext().SaveChanges();
-                        FlatList = new ObservableCollection<Flat>(FLAT_RENTALContext.GetContext().Flats.ToList());
+                        _unitOfWork.Flats.Delete(SelectedFlat);
+                        _unitOfWork.Save();
+
+                        FlatList = new ObservableCollection<Flat>(_unitOfWork.Flats.GetAllItems());
 
                         if (FlatList.Count != 0)
                             SelectedFlat = FlatList.First();

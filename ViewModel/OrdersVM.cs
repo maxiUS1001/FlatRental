@@ -1,5 +1,6 @@
 ﻿using FlatRental.DataModel;
 using FlatRental.Model;
+using FlatRental.Model.Repository;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -25,9 +26,13 @@ namespace FlatRental.ViewModel
             }
         }
 
+        private UnitOfWork _unitOfWork;
+
         public OrdersVM() 
-        { 
-            LeaseList = new ObservableCollection<Lease>(FLAT_RENTALContext.GetContext().Leases.ToList());
+        {
+            _unitOfWork = new UnitOfWork();
+
+            LeaseList = new ObservableCollection<Lease>(_unitOfWork.Leases.GetAllItems());
 
             if(LeaseList.Count != 0)
                 SelectedOrder = LeaseList.First();

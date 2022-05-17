@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="570" d:DesignWidth="920"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      Title="FlatPage">
+      Title="FlatPage" Background="#2A2C2D">
 
     <Page.DataContext>
         <local:FlatPageVM/>
@@ -16,13 +16,11 @@
 
     <Page.Resources>
         <DataTemplate x:Key="ListTemplate">
-            <Border CornerRadius="8" BorderThickness="0" Background="#303233">
+            <Border BorderThickness="0" Background="#303233">
                 <StackPanel Margin="20">
                     <Label Content="{Binding User.Name}" FontSize="18" Foreground="#00CC66" FontWeight="Medium"/>
-                    <TextBlock Text="{Binding Text}" FontSize="18" Foreground="White" TextWrapping="Wrap"/>
+                    <TextBlock Text="{Binding Review.Text}" FontSize="18" Foreground="White" TextWrapping="Wrap"/>
                 </StackPanel>
-                    
-                
             </Border>
         </DataTemplate>
     </Page.Resources>
@@ -116,13 +114,12 @@
                         <StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBox x:Name="ReviewTextBox" Width="500" Foreground="White" Style="{StaticResource MaterialDesignFilledTextBox}" TextWrapping="Wrap" MaxLength="3500" FontSize="18" materialDesign:TextFieldAssist.CharacterCounterVisibility="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxTextCountComboBox, Converter={StaticResource BooleanToVisibilityConverter}}" 
-                                     materialDesign:HintAssist.Hint="Оставьте свой отзыв" Margin="0 20 0 0" BorderBrush="White" CaretBrush="White" Text="{Binding Comment}"/>
-                                <Button Content="Отправить" Margin="10 0 0 0" materialDesign:ButtonAssist.CornerRadius="8" FontSize="18" BorderThickness="0" Command="{Binding AddComment}"
+                                     materialDesign:HintAssist.Hint="Оставьте свой отзыв" Margin="0 20 0 0" BorderBrush="White" CaretBrush="White" Text="{Binding Review, Mode=TwoWay}"/>
+                                <Button Content="Отправить" Margin="10 0 0 0" materialDesign:ButtonAssist.CornerRadius="8" FontSize="18" BorderThickness="0" Command="{Binding AddReview}"
                                     Background="#00CC66" Foreground="White" Style="{StaticResource MaterialDesignFlatMidBgButton}" VerticalAlignment="Bottom"/>
                             </StackPanel>
-                            <ListView ScrollViewer.HorizontalScrollBarVisibility="Hidden" Margin="0 30 0 0"
+                            <ListView Margin="0 30 0 0"
                       ItemsSource="{Binding ReviewList}" ItemTemplate="{StaticResource ResourceKey=ListTemplate}" Style="{StaticResource MaterialDesignCardsListBox}"/>
-
                         </StackPanel>
                         
                         

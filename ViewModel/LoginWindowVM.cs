@@ -1,5 +1,6 @@
 ﻿using FlatRental.DataModel;
 using FlatRental.Model;
+using FlatRental.Model.Repository;
 using FlatRental.View;
 using Microsoft.AspNet.Identity;
 using System;
@@ -15,9 +16,12 @@ namespace FlatRental.ViewModel
 {
     public class LoginWindowVM : ObservableObject
     {
-        private FLAT_RENTALContext _flatContext = FLAT_RENTALContext.GetContext();
+        private UnitOfWork _unitOfWork;
 
-        public LoginWindowVM() { }
+        public LoginWindowVM() 
+        {
+            _unitOfWork = new UnitOfWork();
+        }
 
         private string? _email;
         public string? Email
@@ -51,7 +55,9 @@ namespace FlatRental.ViewModel
                     LoginWindow loginWindow = obj as LoginWindow;
 
                     IPasswordHasher passwordHasher = new PasswordHasher();
-                    var checkUser = _flatContext.Users.Where(u => u.Login == Email).FirstOrDefault();
+                    //var checkUser = _flatContext.Users.Where(u => u.Login == Email).FirstOrDefault();
+                    var checkUser = _unitOfWork.Users.GetAllItems().Where(u => u.Login == Email).FirstOrDefault();
+
                     PasswordVerificationResult verification = passwordHasher.VerifyHashedPassword(checkUser.Password, Password);
 
                     if (verification == PasswordVerificationResult.Success)

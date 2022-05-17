@@ -22,27 +22,24 @@
 
             <Button Margin="0 10 10 0" Style="{StaticResource ResourceKey=CloseAppStyle}" HorizontalAlignment="Right" VerticalAlignment="Top" 
                             Command="{Binding CloseFormCommand}" CommandParameter="{Binding ElementName=RentalForm}"/>
+            <StackPanel Grid.Row="1" Margin="20">
 
-            <ScrollViewer Grid.Row="1" Margin="14">
-                <StackPanel>
+                <StackPanel VerticalAlignment="Center">
 
-                    <StackPanel VerticalAlignment="Center">
+                    <DatePicker x:Name="StartDatePicker" Margin="0 20 0 0" IsTodayHighlighted="True" Style="{StaticResource MaterialDesignFilledDatePicker}" BorderBrush="White"/>
+                    <DatePicker x:Name="EndDatePicker" Style="{StaticResource MaterialDesignFilledDatePicker}" Margin="0 20 0 0" IsTodayHighlighted="True" BorderBrush="White"/>
 
-                        <DatePicker x:Name="StartDatePicker" Style="{StaticResource MaterialDesignDatePicker}" Margin="0 20 0 0" Text="{Binding StartDate, Mode=TwoWay}"/>
-                        <DatePicker x:Name="EndDatePicker" Style="{StaticResource MaterialDesignDatePicker}" Margin="0 20 0 0" Text="{Binding EndDate, Mode=TwoWay}"/>
-
-                        <!--<StackPanel Orientation="Horizontal">
+                    <!--<StackPanel Orientation="Horizontal">
                             <Label Content="Сумма" Foreground="White" FontSize="18"/>
                             <TextBlock Text="{Binding Sum, StringFormat={}{0:C}}"/>
                         </StackPanel>-->
 
-                        <Button Grid.Column="2" Content="Отправить" Style="{StaticResource MaterialDesignFlatMidBgButton}" BorderThickness="0" FontSize="18" 
+                    <Button Grid.Column="2" Content="Отправить" Style="{StaticResource MaterialDesignFlatMidBgButton}" BorderThickness="0" FontSize="18" 
                     Background="#00CC66" Foreground="White" materialDesign:ButtonAssist.CornerRadius="8" Margin="0 20 0 20" HorizontalAlignment="Center"
                                 Command="{Binding SendQueryCommand}" CommandParameter="{Binding ElementName=RentalForm}"/>
-                    </StackPanel>
-
                 </StackPanel>
-            </ScrollViewer>
+
+            </StackPanel>
         </Grid>
     </Border>
 

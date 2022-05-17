@@ -1,5 +1,6 @@
 ﻿using FlatRental.DataModel;
 using FlatRental.Model;
+using FlatRental.Model.Repository;
 using FlatRental.View;
 using FlatRental.View.UserPages;
 using System;
@@ -14,12 +15,18 @@ namespace FlatRental.ViewModel
     public class RentalFormVM : ObservableObject
     {
         private FlatPageVM _flatPage;
+        private UnitOfWork _unitOfWork;
 
         public RentalFormVM() { }
 
         public RentalFormVM(FlatPageVM flatPage)
         {
             _flatPage = flatPage;
+
+            _unitOfWork = new UnitOfWork();
+
+            //StartDate = DateTime.Now;
+            //EndDate = DateTime.Now;
         }
 
         //Close app
@@ -36,41 +43,41 @@ namespace FlatRental.ViewModel
             }
         }
 
-        private DateTime _startDate;
-        public DateTime StartDate
-        {
-            get { return _startDate; }
-            set 
-            {
-                _startDate = value;
-                OnPropertyChanged("StartDate");
-            }
-        }
+        //private DateTime _startDate;
+        //public DateTime StartDate
+        //{
+        //    get { return _startDate; }
+        //    set 
+        //    {
+        //        _startDate = value;
+        //        OnPropertyChanged("StartDate");
+        //    }
+        //}
 
-        private DateTime _endDate;
-        public DateTime EndDate
-        {
-            get { return _endDate; }
-            set
-            {
-                _endDate = value;
-                OnPropertyChanged("StartDate");
-            }
-        }
+        //private DateTime _endDate;
+        //public DateTime EndDate
+        //{
+        //    get { return _endDate; }
+        //    set
+        //    {
+        //        _endDate = value;
+        //        OnPropertyChanged("StartDate");
+        //    }
+        //}
 
-        private decimal? _sum;
-        public decimal? Sum
-        {
-            get
-            {
-                return _sum;
-            }
-            set
-            {
-                _sum = (StartDate.Day - EndDate.Day) * _flatPage.CurrentFlat.Price;
-                OnPropertyChanged("Sum");
-            }
-        }
+        //private decimal? _sum;
+        //public decimal? Sum
+        //{
+        //    get
+        //    {
+        //        return _sum;
+        //    }
+        //    set
+        //    {
+        //        _sum = (StartDate.Day - EndDate.Day) * _flatPage.CurrentFlat.Price;
+        //        OnPropertyChanged("Sum");
+        //    }
+        //}
 
         private ICommand _sendQueryCommand;
         public ICommand SendQueryCommand
@@ -84,12 +91,16 @@ namespace FlatRental.ViewModel
                     Lease lease = new Lease();
                     lease.FlatId = _flatPage.CurrentFlat.FlatId;
                     lease.UserId = CurrentUser.GetInstance().UserId;
-                    lease.StartDate = StartDate;
-                    lease.EndDate = EndDate;
-                    lease.TotalSum = (EndDate.Day - StartDate.Day) * _flatPage.CurrentFlat.Price;
 
-                    FLAT_RENTALContext.GetContext().Leases.Add(lease);
-                    FLAT_RENTALContext.GetContext().SaveChanges();
+                    DateTime startDate = DateTime.Parse(rentalForm.StartDatePicker.Text);
+                    DateTime endDate = DateTime.Parse(rentalForm.EndDatePicker.Text);
+
+                    lease.StartDate = startDate;
+                    lease.EndDate = endDate;
+                    lease.TotalSum = (endDate.DayOfYear - startDate.DayOfYear) * _flatPage.CurrentFlat.Price;
+
+                    _unitOfWork.Leases.Create(lease);
+                    _unitOfWork.Save();
 
                     rentalForm.Close();
                 }));
