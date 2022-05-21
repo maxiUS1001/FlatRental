@@ -19,11 +19,13 @@ namespace FlatRental.Model.Repository
         public void Create(Flat item)
         {
             _flatContext.Flats.Add(item);
+            _flatContext.SaveChanges();
         }
 
         public void Delete(Flat item)
         {
             _flatContext.Flats.Remove(item);
+            _flatContext.SaveChanges();
         }
 
         public IEnumerable<Flat> GetAllItems()
@@ -34,6 +36,7 @@ namespace FlatRental.Model.Repository
         public void Update(Flat item)
         {
             _flatContext.Flats.Update(item);
+            _flatContext.SaveChanges();
         }
     }
 }

@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace FlatRental.Model.Repository
 {
-    interface IReviewRepository : IRepository<Review>
+    interface ILeaseRepository : IRepository<Lease>
     {
-        ObservableCollection<UserReview> GetUserReviewAboutFlat(Flat item);
+        ObservableCollection<UserLease> GetUserLeases();
     }
 }

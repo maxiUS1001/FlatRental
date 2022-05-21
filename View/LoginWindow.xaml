@@ -21,13 +21,13 @@
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Войдите в ваш аккаунт" Foreground="#00CC66"/>
 
                 <TextBox Margin="0 50 0 0" x:Name="EmailTextBox" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Email" Foreground="White"
-                         BorderBrush="White" CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}" Text="{Binding Email}"/>
+                         CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}" Text="{Binding Email}"/>
 
                 <!--<PasswordBox Margin="0 20 0 0" x:Name="PasswordTextBox" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Пароль" Foreground="White"
                          BorderBrush="White" CaretBrush="White" Style="{StaticResource MaterialDesignFilledPasswordBox}"/>-->
 
                 <TextBox Margin="0 20 0 0" x:Name="PasswordTextBox" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Пароль" Foreground="White"
-                         BorderBrush="White" CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}" Text="{Binding Password}"/>
+                         CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}" Text="{Binding Password}"/>
                 
                 <Button Margin="0 20 0 0" x:Name="SignInButton" Style="{StaticResource MaterialDesignFlatMidBgButton}" BorderThickness="0" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=Login}"
                         Height="53" Width="300" materialDesign:ButtonAssist.CornerRadius="8" FontSize="18" Content="Войти" Background="#00CC66" Foreground="White"/>

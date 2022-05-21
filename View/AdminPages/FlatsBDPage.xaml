@@ -20,7 +20,7 @@
         </Grid.RowDefinitions>
         
         <DataGrid x:Name="FlatsDataGrid" Style="{StaticResource MaterialDesignDataGrid}" ItemsSource="{Binding FlatList}" AutoGenerateColumns="False"
-                  IsReadOnly="True" ColumnWidth="*" Background="White" CanUserResizeColumns="False" CanUserReorderColumns="False" SelectedItem="{Binding SelectedFlat}">
+                  IsReadOnly="True" ColumnWidth="*" CanUserResizeColumns="False" CanUserReorderColumns="False" SelectedItem="{Binding SelectedFlat}" Background="#2A2C2D" BorderThickness="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Flat_ID" Binding="{Binding FlatId}"/>
                 <DataGridTextColumn Header="Metro" Binding="{Binding Metro}"/>

@@ -40,20 +40,29 @@ namespace FlatRental.ViewModel
                         user.Password = registerWindow.PasswordTextBox.Password;
                         user.RoleId = (int?)Roles.User;
 
+                        
                         if (Validation.CheckValid(user))
                         {
-                            IPasswordHasher passwordHasher = new PasswordHasher();
-                            user.Password = passwordHasher.HashPassword(user.Password);
+                            if (!_unitOfWork.Users.IsExistUser(user.Login))
+                            {
+                                IPasswordHasher passwordHasher = new PasswordHasher();
+                                user.Password = passwordHasher.HashPassword(user.Password);
 
-                            _unitOfWork.Users.Create(user);
-                            _unitOfWork.Save();
+                                _unitOfWork.Users.Create(user);
 
-                            var result = new CustomMessageBox("Вы зарегистрировались",
-                                        MessageType.Success,
+                                var result = new CustomMessageBox("Вы зарегистрировались",
+                                            MessageType.Success,
+                                            MessageButtons.Ok).ShowDialog();
+
+                                registerWindow.Close();
+                            }
+                            else
+                            {
+                                var result = new CustomMessageBox("Пользователь уже существует",
+                                        MessageType.Error,
                                         MessageButtons.Ok).ShowDialog();
-
-                            registerWindow.Close();
-                        }
+                            }
+                        }                     
                     }
                     catch (Exception ex)
                     {

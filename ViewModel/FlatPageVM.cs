@@ -1,6 +1,7 @@
 ﻿using FlatRental.DataModel;
 using FlatRental.Model;
 using FlatRental.Model.Repository;
+using FlatRental.View;
 using FlatRental.View.UserPages;
 using System;
 using System.Collections.Generic;
@@ -56,9 +57,29 @@ namespace FlatRental.ViewModel
             {
                 return _openRentalForm ?? (_openRentalForm = new RelayCommand(obj =>
                 {
-                    RentalFormWindow rentalForm = new RentalFormWindow();
-                    rentalForm.DataContext = new RentalFormVM(this);
-                    rentalForm.Show();
+                    if(CurrentFlat.RentalType == "На день")
+                    {
+                        Lease lease = new Lease();
+                        lease.FlatId = CurrentFlat.FlatId;
+                        lease.UserId = CurrentUser.GetInstance().UserId;
+
+                        lease.StartDate = DateTime.Now;
+                        lease.EndDate = DateTime.Now.AddDays(1);
+                        //lease.TotalSum = (endDate.DayOfYear - startDate.DayOfYear) * CurrentFlat.Price;
+                        lease.TotalSum = CurrentFlat.Price;
+
+                        _unitOfWork.Leases.Create(lease);
+
+                        var result = new CustomMessageBox("Заявка отправлена",
+                                            MessageType.Success,
+                                            MessageButtons.Ok).ShowDialog();
+                    }
+                    if (CurrentFlat.RentalType == "Долгосрочная")
+                    {
+                        RentalFormWindow rentalForm = new RentalFormWindow();
+                        rentalForm.DataContext = new RentalFormVM(this);
+                        rentalForm.Show();
+                    }
                 }));
             }
         }
@@ -81,6 +102,8 @@ namespace FlatRental.ViewModel
             {
                 return _addReview ?? (_addReview = new RelayCommand(obj =>
                 {
+                    FlatPage flatPage = obj as FlatPage;
+
                     Review review = new Review();
                     review.DateOfReview = DateTime.Now;
                     review.FlatId = CurrentFlat.FlatId;
@@ -88,10 +111,10 @@ namespace FlatRental.ViewModel
                     review.Text = Review;
 
                     _unitOfWork.Reviews.Create(review);
-                    _unitOfWork.Save();
 
                     ReviewList = _unitOfWork.Reviews.GetUserReviewAboutFlat(CurrentFlat);
-                    Review = null;
+
+                    flatPage.ReviewTextBox.Text = "";
                 }));
             }
         }

@@ -9,7 +9,7 @@ namespace FlatRental.Model
 {
     public static class CurrentUser
     {
-        private static User instance;
+        private static User? instance;
         private static object syncRoot = new Object();
 
         public static User GetInstance()
@@ -34,6 +34,18 @@ namespace FlatRental.Model
                         instance = user;
                 }
             }
+        }
+
+        public static void ClearInstance()
+        {
+            if(instance != null)
+            {
+                lock(syncRoot)
+                {
+                    if (instance != null)
+                        instance = null;
+                }              
+            }          
         }
     }
 }

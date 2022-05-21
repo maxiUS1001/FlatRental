@@ -36,9 +36,6 @@ namespace FlatRental.ViewModel
             _unitOfWork = new UnitOfWork();
 
             FlatList = new ObservableCollection<Flat>(_unitOfWork.Flats.GetAllItems());
-           
-            if (FlatList.Count != 0)
-                SelectedFlat = FlatList.First();
         }
 
         private Flat _selectedFlat;
@@ -66,7 +63,6 @@ namespace FlatRental.ViewModel
                     try
                     {
                         _unitOfWork.Flats.Delete(SelectedFlat);
-                        _unitOfWork.Save();
 
                         FlatList = new ObservableCollection<Flat>(_unitOfWork.Flats.GetAllItems());
 
@@ -79,11 +75,10 @@ namespace FlatRental.ViewModel
                     }
                     catch (Exception ex)
                     {
-                        var result = new CustomMessageBox(ex.Message,
+                        var result = new CustomMessageBox("Выберите квартиру для удаления",
                                     MessageType.Error,
                                     MessageButtons.Ok).ShowDialog();
-                    }
-                   
+                    }             
                 }));
             }
         }
@@ -119,7 +114,7 @@ namespace FlatRental.ViewModel
                     }
                     catch (Exception ex)
                     {
-                        var result = new CustomMessageBox(ex.Message,
+                        var result = new CustomMessageBox("Выберите квартиру для изменения",
                                     MessageType.Error,
                                     MessageButtons.Ok).ShowDialog();
                     }

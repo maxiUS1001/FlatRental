@@ -255,7 +255,6 @@ namespace FlatRental.ViewModel
                         if (Validation.CheckValid(_flat))
                         {
                             _unitOfWork.Flats.Update(_flat);
-                            _unitOfWork.Save();
 
                             _editFlatsModel.FlatList = new ObservableCollection<Flat>(_unitOfWork.Flats.GetAllItems());
                             var result = new CustomMessageBox("Квартира изменена",

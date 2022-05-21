@@ -11,30 +11,24 @@
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"        
         WindowStyle="None" Background="Transparent" AllowsTransparency="True">
-    <Border CornerRadius="8" Background="#2A2C2D" MouseDown="DragMoveWindow_MouseDown">
+    <Border CornerRadius="8" Background="White" MouseDown="DragMoveWindow_MouseDown">
         <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="197*"/>
-                <ColumnDefinition Width="295*"/>
-            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TextBlock x:Name="txtTitle" HorizontalAlignment="Center" VerticalAlignment="Stretch" Style="{DynamicResource MaterialDesignTitleTextBlock}" Grid.ColumnSpan="2" FontSize="20" Padding="10" Margin="0" Text="Test" Foreground="White"/>
-            <Button x:Name="btnClose" Click="btnClose_Click" Style="{StaticResource ResourceKey=CloseAppStyle}"  Margin="0 10 10 0" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="1"/>
+            <TextBlock x:Name="txtTitle" HorizontalAlignment="Center" VerticalAlignment="Stretch" Style="{DynamicResource MaterialDesignTitleTextBlock}" Grid.ColumnSpan="2" FontSize="20" Padding="10" Margin="0" Text="Test"/>
             <Grid Grid.Row="1" Grid.ColumnSpan="2">
-                <Grid Margin="20">
+                <Grid Margin="15">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <Grid Grid.Row="0">
+                    <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
                             <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
                             <materialDesign:PackIcon x:Name="ConfirmationIcon" Kind="HelpCircleOutline" Width="40" Height="40" Foreground="DarkRed" Visibility="Collapsed" />
@@ -42,11 +36,11 @@
                             <materialDesign:PackIcon x:Name="SuccessIcon" Kind="CheckCircleOutline" Width="40" Height="40" Foreground="Green" Visibility="Collapsed" />
                             <materialDesign:PackIcon x:Name="ErrorIcon" Kind="CloseCircleOutline" Width="40" Height="40" Foreground="Red" Visibility="Collapsed" />
                             <TextBox x:Name="txtMessage" Width="400" Text="Test message" VerticalAlignment="Center" IsReadOnly="True" Grid.Row="0" Margin="5" 
-                                     FontSize="18" Style="{StaticResource MaterialDesignDataGridComboBoxEditableTextBox}" TextWrapping="Wrap" Foreground="White"/>
+                                     FontSize="18" Style="{StaticResource MaterialDesignDataGridComboBoxEditableTextBox}" TextWrapping="Wrap"/>
                         </StackPanel>
 
                     </Grid>
-                    <Grid Grid.Row="1" Margin="0,20,0,5">
+                    <Grid Grid.Row="1" Margin="0 10 0 0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="auto"/>

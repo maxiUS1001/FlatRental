@@ -19,15 +19,17 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <DataGrid x:Name="FlatsDataGrid" Style="{StaticResource MaterialDesignDataGrid}" ItemsSource="{Binding LeaseList}" AutoGenerateColumns="False"
-                  IsReadOnly="True" ColumnWidth="*" Background="White" CanUserResizeColumns="False" CanUserReorderColumns="False" SelectedItem="{Binding SelectedOrder}">
+        <DataGrid x:Name="FlatsDataGrid" Style="{StaticResource MaterialDesignDataGrid}" ItemsSource="{Binding LeaseList}" AutoGenerateColumns="False" BorderThickness="1"
+                  IsReadOnly="True" ColumnWidth="*" CanUserResizeColumns="False" CanUserReorderColumns="False" SelectedItem="{Binding SelectedOrder}" Background="#2A2C2D">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Номер заказа" Binding="{Binding LeaseId}"/>
-                <DataGridTextColumn Header="ID квартиры" Binding="{Binding FlatId}"/>
-                <DataGridTextColumn x:Name="User" Header="ID заказчика" Binding="{Binding UserId}"/>
-                <DataGridTextColumn Header="Начало аренды" Binding="{Binding StartDate, StringFormat={}{0:d}}"/>
-                <DataGridTextColumn Header="Конец аренды" Binding="{Binding EndDate, StringFormat={}{0:d}}"/>
-                <DataGridTextColumn Header="Сумма" Binding="{Binding TotalSum, StringFormat={}{0:F2}}"/>
+                <DataGridTextColumn Header="Номер заказа" Binding="{Binding Lease.LeaseId}"/>
+                <DataGridTextColumn Header="ID квартиры" Binding="{Binding Lease.FlatId}"/>
+                <DataGridTextColumn Header="ID пользователя" Binding="{Binding User.UserId}"/>
+                <DataGridTextColumn Header="Имя заказчика" Binding="{Binding User.Name}"/>
+                <DataGridTextColumn Header="Телефон заказчика" Binding="{Binding User.PhoneNumber}"/>
+                <DataGridTextColumn Header="Начало аренды" Binding="{Binding Lease.StartDate, StringFormat={}{0:d}}"/>
+                <DataGridTextColumn Header="Конец аренды" Binding="{Binding Lease.EndDate, StringFormat={}{0:d}}"/>
+                <DataGridTextColumn Header="Сумма" Binding="{Binding Lease.TotalSum, StringFormat={}{0:F2}}"/>
             </DataGrid.Columns>
         </DataGrid>
 
@@ -39,7 +41,7 @@
 
             <Button Content="Изменить" Style="{StaticResource MaterialDesignFlatMidBgButton}" BorderThickness="0" FontSize="18" 
                     Background="#00CC66" Foreground="White" HorizontalAlignment="Center" materialDesign:ButtonAssist.CornerRadius="8"
-                    Command="{Binding OpenEditFlatFormCommand}"/>
+                    Command="{Binding OpenEditOrderFormCommand}"/>
             <Button Content="Удалить" Grid.Column="1" Style="{StaticResource MaterialDesignFlatMidBgButton}" BorderThickness="0" FontSize="18" 
                     Background="#00CC66" Foreground="White" HorizontalAlignment="Center" Command="{Binding DeleteItemCommand}"
                     materialDesign:ButtonAssist.CornerRadius="8"/>

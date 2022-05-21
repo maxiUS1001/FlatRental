@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:FlatRental.ViewModel"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d" x:Name="RentalForm" ResizeMode="NoResize"
-        Title="RentalFormWindow" Height="450" Width="450" WindowStyle="None" WindowStartupLocation="CenterScreen"
+        Title="RentalFormWindow" Height="200" Width="450" WindowStyle="None" WindowStartupLocation="CenterScreen"
         AllowsTransparency="True" Background="Transparent">
 
     <Window.DataContext>
@@ -15,24 +15,21 @@
     
     <Border CornerRadius="8" Background="#303233" MouseDown="DragMoveWindow_MouseDown">
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="9*"/>
-            </Grid.RowDefinitions>
 
-            <Button Margin="0 10 10 0" Style="{StaticResource ResourceKey=CloseAppStyle}" HorizontalAlignment="Right" VerticalAlignment="Top" 
+            <StackPanel Grid.Row="1">
+                <Button Margin="0 10 10 0" Style="{StaticResource ResourceKey=CloseAppStyle}" HorizontalAlignment="Right" VerticalAlignment="Top" 
                             Command="{Binding CloseFormCommand}" CommandParameter="{Binding ElementName=RentalForm}"/>
-            <StackPanel Grid.Row="1" Margin="20">
 
                 <StackPanel VerticalAlignment="Center">
 
-                    <DatePicker x:Name="StartDatePicker" Margin="0 20 0 0" IsTodayHighlighted="True" Style="{StaticResource MaterialDesignFilledDatePicker}" BorderBrush="White"/>
-                    <DatePicker x:Name="EndDatePicker" Style="{StaticResource MaterialDesignFilledDatePicker}" Margin="0 20 0 0" IsTodayHighlighted="True" BorderBrush="White"/>
-
-                    <!--<StackPanel Orientation="Horizontal">
-                            <Label Content="Сумма" Foreground="White" FontSize="18"/>
-                            <TextBlock Text="{Binding Sum, StringFormat={}{0:C}}"/>
-                        </StackPanel>-->
+                    <ComboBox x:Name="YearsTextBox" Foreground="White" Style="{StaticResource MaterialDesignFilledComboBox}" 
+                                  materialDesign:HintAssist.Hint="На сколько лет" Width="300" FontSize="18" Margin="0 20 0 0" Text="{Binding HowManyYears}">
+                        <ComboBoxItem Content="1"/>
+                        <ComboBoxItem Content="2"/>
+                        <ComboBoxItem Content="3"/>
+                        <ComboBoxItem Content="4"/>
+                        <ComboBoxItem Content="5"/>
+                    </ComboBox>
 
                     <Button Grid.Column="2" Content="Отправить" Style="{StaticResource MaterialDesignFlatMidBgButton}" BorderThickness="0" FontSize="18" 
                     Background="#00CC66" Foreground="White" materialDesign:ButtonAssist.CornerRadius="8" Margin="0 20 0 20" HorizontalAlignment="Center"

@@ -12,29 +12,29 @@
     <Window.DataContext>
         <local:RegisterWindowVM/>
     </Window.DataContext>
-    
-    <materialDesign:Card UniformCornerRadius="8" Background="#2A2C2D" materialDesign:ShadowAssist.ShadowDepth="Depth4" MouseDown="DragMoveWindow_MouseDown">
+
+    <Border CornerRadius="8" Background="#303233" MouseDown="DragMoveWindow_MouseDown">
         <Grid>
             <Button Margin="0 10 10 0" Style="{StaticResource ResourceKey=CloseAppStyle}" Click="CloseRegisterWindow_Click" HorizontalAlignment="Right" VerticalAlignment="Top"/>
             <StackPanel VerticalAlignment="Center">
                 <TextBlock HorizontalAlignment="Center" FontWeight="SemiBold" Foreground="#00CC66" Text="Регистрация" FontSize="28"/>
 
                 <TextBox Margin="0 20 0 0" x:Name="EmailTextBox" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Email" Foreground="White"
-                         BorderBrush="White" CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}"/>
+                         CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}"/>
 
                 <TextBox Margin="0 20 0 0" x:Name="UsernameTextBox" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Имя" Foreground="White"
-                         BorderBrush="White" CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}"/>
+                         CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}"/>
 
                 <TextBox Margin="0 20 0 0" x:Name="PhoneTextBox" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Номер телефона" Foreground="White"
-                         BorderBrush="White" CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}"/>
+                         CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}"/>
 
                 <PasswordBox Margin="0 20 0 0" x:Name="PasswordTextBox" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Пароль" Foreground="White"
-                         BorderBrush="White" CaretBrush="White" Style="{StaticResource MaterialDesignFilledPasswordBox}"/>
+                         CaretBrush="White" Style="{StaticResource MaterialDesignFilledPasswordBox}"/>
 
                 <Button Margin="0 20 0 0" Style="{StaticResource MaterialDesignFlatMidBgButton}" BorderThickness="0" Command="{Binding AddUserCommand}" CommandParameter="{Binding ElementName=Register}"
                         Height="53" Width="300" materialDesign:ButtonAssist.CornerRadius="8" FontSize="18" Content="Создать аккаунт" Background="#00CC66" Foreground="White"/>
             </StackPanel>
         </Grid>
-    </materialDesign:Card>
+    </Border>
     
 </Window>

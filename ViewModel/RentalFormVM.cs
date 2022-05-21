@@ -24,9 +24,6 @@ namespace FlatRental.ViewModel
             _flatPage = flatPage;
 
             _unitOfWork = new UnitOfWork();
-
-            //StartDate = DateTime.Now;
-            //EndDate = DateTime.Now;
         }
 
         //Close app
@@ -43,41 +40,16 @@ namespace FlatRental.ViewModel
             }
         }
 
-        //private DateTime _startDate;
-        //public DateTime StartDate
-        //{
-        //    get { return _startDate; }
-        //    set 
-        //    {
-        //        _startDate = value;
-        //        OnPropertyChanged("StartDate");
-        //    }
-        //}
-
-        //private DateTime _endDate;
-        //public DateTime EndDate
-        //{
-        //    get { return _endDate; }
-        //    set
-        //    {
-        //        _endDate = value;
-        //        OnPropertyChanged("StartDate");
-        //    }
-        //}
-
-        //private decimal? _sum;
-        //public decimal? Sum
-        //{
-        //    get
-        //    {
-        //        return _sum;
-        //    }
-        //    set
-        //    {
-        //        _sum = (StartDate.Day - EndDate.Day) * _flatPage.CurrentFlat.Price;
-        //        OnPropertyChanged("Sum");
-        //    }
-        //}
+        private int _howManyYears;
+        public int HowManyYears
+        {
+            get { return _howManyYears; }
+            set
+            {
+                _howManyYears = value;
+                OnPropertyChanged("HowManyYears");
+            }
+        }
 
         private ICommand _sendQueryCommand;
         public ICommand SendQueryCommand
@@ -86,23 +58,36 @@ namespace FlatRental.ViewModel
             {
                 return _sendQueryCommand ?? (_sendQueryCommand = new RelayCommand(obj =>
                 {
-                    RentalFormWindow rentalForm = obj as RentalFormWindow;
+                    if (HowManyYears != 0)
+                    {
+                        RentalFormWindow rentalForm = obj as RentalFormWindow;
 
-                    Lease lease = new Lease();
-                    lease.FlatId = _flatPage.CurrentFlat.FlatId;
-                    lease.UserId = CurrentUser.GetInstance().UserId;
+                        Lease lease = new Lease();
+                        lease.FlatId = _flatPage.CurrentFlat.FlatId;
+                        lease.UserId = CurrentUser.GetInstance().UserId;
 
-                    DateTime startDate = DateTime.Parse(rentalForm.StartDatePicker.Text);
-                    DateTime endDate = DateTime.Parse(rentalForm.EndDatePicker.Text);
+                        DateTime startDate = DateTime.Now;
+                        DateTime endDate = DateTime.Now.AddYears(HowManyYears);
 
-                    lease.StartDate = startDate;
-                    lease.EndDate = endDate;
-                    lease.TotalSum = (endDate.DayOfYear - startDate.DayOfYear) * _flatPage.CurrentFlat.Price;
+                        lease.StartDate = startDate;
+                        lease.EndDate = endDate;
+                        //lease.TotalSum = (endDate - startDate).Days / 30 * _flatPage.CurrentFlat.Price;
+                        lease.TotalSum = _flatPage.CurrentFlat.Price;
 
-                    _unitOfWork.Leases.Create(lease);
-                    _unitOfWork.Save();
+                        _unitOfWork.Leases.Create(lease);
 
-                    rentalForm.Close();
+                        rentalForm.Close();
+
+                        var result = new CustomMessageBox("Заявка отправлена",
+                                            MessageType.Success,
+                                            MessageButtons.Ok).ShowDialog();
+                    }
+                    else
+                    {
+                        var result = new CustomMessageBox("Выберите срок",
+                                    MessageType.Error,
+                                    MessageButtons.Ok).ShowDialog();
+                    }
                 }));
             }
         }

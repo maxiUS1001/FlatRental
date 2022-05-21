@@ -54,10 +54,5 @@ namespace FlatRental.Model.Repository
                 return _reviewRepository;
             }
         }
-
-        public void Save()
-        {
-            db.SaveChanges();
-        }
     }
 }

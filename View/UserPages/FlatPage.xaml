@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:FlatRental.ViewModel"
-      mc:Ignorable="d" 
+      mc:Ignorable="d" x:Name="ShowFlat"
       d:DesignHeight="570" d:DesignWidth="920"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       Title="FlatPage" Background="#2A2C2D">
@@ -116,7 +116,7 @@
                                 <TextBox x:Name="ReviewTextBox" Width="500" Foreground="White" Style="{StaticResource MaterialDesignFilledTextBox}" TextWrapping="Wrap" MaxLength="3500" FontSize="18" materialDesign:TextFieldAssist.CharacterCounterVisibility="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxTextCountComboBox, Converter={StaticResource BooleanToVisibilityConverter}}" 
                                      materialDesign:HintAssist.Hint="Оставьте свой отзыв" Margin="0 20 0 0" BorderBrush="White" CaretBrush="White" Text="{Binding Review, Mode=TwoWay}"/>
                                 <Button Content="Отправить" Margin="10 0 0 0" materialDesign:ButtonAssist.CornerRadius="8" FontSize="18" BorderThickness="0" Command="{Binding AddReview}"
-                                    Background="#00CC66" Foreground="White" Style="{StaticResource MaterialDesignFlatMidBgButton}" VerticalAlignment="Bottom"/>
+                                    Background="#00CC66" Foreground="White" Style="{StaticResource MaterialDesignFlatMidBgButton}" VerticalAlignment="Bottom" CommandParameter="{Binding ElementName=ShowFlat}"/>
                             </StackPanel>
                             <ListView Margin="0 30 0 0"
                       ItemsSource="{Binding ReviewList}" ItemTemplate="{StaticResource ResourceKey=ListTemplate}" Style="{StaticResource MaterialDesignCardsListBox}"/>

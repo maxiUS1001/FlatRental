@@ -75,7 +75,6 @@ namespace FlatRental.ViewModel
                         if (Validation.CheckValid(flat))
                         {
                             _unitOfWork.Flats.Create(flat);
-                            _unitOfWork.Save();
                             
                             _editFlatsModel.FlatList = new ObservableCollection<Flat>(_unitOfWork.Flats.GetAllItems());                          
                             

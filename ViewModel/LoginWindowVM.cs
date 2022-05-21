@@ -52,30 +52,44 @@ namespace FlatRental.ViewModel
             {
                 return _loginCommand ?? (_loginCommand = new RelayCommand(obj =>
                 {
-                    LoginWindow loginWindow = obj as LoginWindow;
-
-                    IPasswordHasher passwordHasher = new PasswordHasher();
-                    //var checkUser = _flatContext.Users.Where(u => u.Login == Email).FirstOrDefault();
-                    var checkUser = _unitOfWork.Users.GetAllItems().Where(u => u.Login == Email).FirstOrDefault();
-
-                    PasswordVerificationResult verification = passwordHasher.VerifyHashedPassword(checkUser.Password, Password);
-
-                    if (verification == PasswordVerificationResult.Success)
+                    try
                     {
-                        CurrentUser.SetInstance(checkUser);
+                        LoginWindow loginWindow = obj as LoginWindow;
 
-                        if (checkUser.RoleId == (int?)Roles.Admin)
-                        {                          
-                            AdminWindow adminWindow = new AdminWindow();
-                            adminWindow.Show();
-                            loginWindow.Close();
-                        }
-                        if (checkUser.RoleId == (int?)Roles.User)
+                        IPasswordHasher passwordHasher = new PasswordHasher();
+                        var checkUser = _unitOfWork.Users.GetAllItems().Where(u => u.Login == Email).FirstOrDefault();
+
+                        PasswordVerificationResult verification = passwordHasher.VerifyHashedPassword(checkUser.Password, Password);
+
+                        if (verification == PasswordVerificationResult.Success)
                         {
-                            UserWindow userWindow = new UserWindow();
-                            userWindow.Show();
-                            loginWindow.Close();
+                            CurrentUser.SetInstance(checkUser);
+
+                            if (checkUser.RoleId == (int?)Roles.Admin)
+                            {
+                                AdminWindow adminWindow = new AdminWindow();
+                                adminWindow.Show();
+                                loginWindow.Close();
+                            }
+                            if (checkUser.RoleId == (int?)Roles.User)
+                            {
+                                UserWindow userWindow = new UserWindow();
+                                userWindow.Show();
+                                loginWindow.Close();
+                            }
                         }
+                        else
+                        {
+                            var result = new CustomMessageBox("Проверьте данные",
+                                        MessageType.Error,
+                                        MessageButtons.Ok).ShowDialog();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        var result = new CustomMessageBox("Проверьте данные",
+                                        MessageType.Error,
+                                        MessageButtons.Ok).ShowDialog();
                     }
                 }));
             }

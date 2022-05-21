@@ -30,43 +30,151 @@
 
                     <StackPanel VerticalAlignment="Center">
 
+                        <ComboBox x:Name="MetroTextBox" Foreground="White" Style="{StaticResource MaterialDesignFilledComboBox}" 
+                                  materialDesign:HintAssist.Hint="Метро" Width="300" FontSize="18" Margin="0 20 0 0">
+                            <ComboBoxItem Content="Автозаводская"/>
+                            <ComboBoxItem Content="Академия наук"/>
+                            <ComboBoxItem Content="Борисовский тракт"/>
+                            <ComboBoxItem Content="Вокзальная"/>
+                            <ComboBoxItem Content="Восток"/>
+                            <ComboBoxItem Content="Грушевка"/>
+                            <ComboBoxItem Content="Институт культуры"/>
+                            <ComboBoxItem Content="Каменная Горка"/>
+                            <ComboBoxItem Content="Ковальская Слобода"/>
+                            <ComboBoxItem Content="Кунцевщина"/>
+                            <ComboBoxItem Content="Малиновка"/>
+                            <ComboBoxItem Content="Михалово"/>
+                            <ComboBoxItem Content="Могилевская"/>
+                            <ComboBoxItem Content="Молодежная"/>
+                            <ComboBoxItem Content="Московская"/>
+                            <ComboBoxItem Content="Немига"/>
+                            <ComboBoxItem Content="Октябрьская (Купаловская)"/>
+                            <ComboBoxItem Content="Парк Челюскинцев"/>
+                            <ComboBoxItem Content="Партизанская"/>
+                            <ComboBoxItem Content="Первомайская"/>
+                            <ComboBoxItem Content="Петровщина"/>
+                            <ComboBoxItem Content="Площадь Ленина"/>
+                            <ComboBoxItem Content="Площадь Победы"/>
+                            <ComboBoxItem Content="Площадь Франтишка Богушевича"/>
+                            <ComboBoxItem Content="Площадь Якуба Коласа"/>
+                            <ComboBoxItem Content="Пролетарская"/>
+                            <ComboBoxItem Content="Пушкинская"/>
+                            <ComboBoxItem Content="Спортивная"/>
+                            <ComboBoxItem Content="Тракторный завод"/>
+                            <ComboBoxItem Content="Уручье"/>
+                            <ComboBoxItem Content="Фрунзенская"/>
+                            <ComboBoxItem Content="Юбилейная площадь"/>
+                        </ComboBox>
 
-                        <TextBox x:Name="MetroTextBox" Width="300" FontSize="18" Style="{StaticResource MaterialDesignFilledTextBox}" 
-                          materialDesign:HintAssist.Hint="Метро" Foreground="White" BorderBrush="White" 
-                                 CaretBrush="White" Margin="0 20 0 0"/>
+                        <ComboBox x:Name="DistrictTextBox" Foreground="White" Style="{StaticResource MaterialDesignFilledComboBox}" 
+                                  materialDesign:HintAssist.Hint="Район" Width="300" FontSize="18" Margin="0 20 0 0">
+                            <ComboBoxItem Content="Заводской"/>
+                            <ComboBoxItem Content="Ленинский"/>
+                            <ComboBoxItem Content="Московский"/>
+                            <ComboBoxItem Content="Октябрьский"/>
+                            <ComboBoxItem Content="Партизанский"/>
+                            <ComboBoxItem Content="Первомайский"/>
+                            <ComboBoxItem Content="Советский"/>
+                            <ComboBoxItem Content="Фрунзенский"/>
+                            <ComboBoxItem Content="Центральный"/>
+                        </ComboBox>
 
-                        <TextBox Margin="0 20 0 0" x:Name="DistrictTextBox" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Район" Foreground="White"
-                         BorderBrush="White" CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}"/>
-
-                        <TextBox Margin="0 20 0 0" x:Name="MicrodistrictTextBox" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Микрорайон" Foreground="White"
-                         BorderBrush="White" CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}"/>
+                        <ComboBox x:Name="MicrodistrictTextBox" Foreground="White" Style="{StaticResource MaterialDesignFilledComboBox}" 
+                                  materialDesign:HintAssist.Hint="Микрорайон" Width="300" FontSize="18" Margin="0 20 0 0">
+                            <ComboBoxItem Content="Академия наук"/>
+                            <ComboBoxItem Content="Ангарская"/>
+                            <ComboBoxItem Content="Аэродромная"/>
+                            <ComboBoxItem Content="Боровая"/>
+                            <ComboBoxItem Content="Боровляны"/>
+                            <ComboBoxItem Content="Брилевичи"/>
+                            <ComboBoxItem Content="Верхний город"/>
+                            <ComboBoxItem Content="Веснянка"/>
+                            <ComboBoxItem Content="Восток"/>
+                            <ComboBoxItem Content="Восточный"/>
+                            <ComboBoxItem Content="Грушевка"/>
+                            <ComboBoxItem Content="Домбровка"/>
+                            <ComboBoxItem Content="Дражня"/>
+                            <ComboBoxItem Content="Запад"/>
+                            <ComboBoxItem Content="Заславская"/>
+                            <ComboBoxItem Content="Зацень"/>
+                            <ComboBoxItem Content="Зеленый луг"/>
+                            <ComboBoxItem Content="Каменная Горка"/>
+                            <ComboBoxItem Content="Каскад"/>
+                            <ComboBoxItem Content="Комаровка"/>
+                            <ComboBoxItem Content="Красный Бор"/>
+                            <ComboBoxItem Content="Кунцевщина"/>
+                            <ComboBoxItem Content="Курасовщина"/>
+                            <ComboBoxItem Content="Лебяжий"/>
+                            <ComboBoxItem Content="Лошица"/>
+                            <ComboBoxItem Content="Малиновка"/>
+                            <ComboBoxItem Content="Масюковщина"/>
+                            <ComboBoxItem Content="Медвежино"/>
+                            <ComboBoxItem Content="Минск-Сити"/>
+                            <ComboBoxItem Content="Михалово"/>
+                            <ComboBoxItem Content="Новинки"/>
+                            <ComboBoxItem Content="Озерище"/>
+                            <ComboBoxItem Content="Поселок Радужный"/>
+                            <ComboBoxItem Content="Пулихова"/>
+                            <ComboBoxItem Content="Раковское шоссе"/>
+                            <ComboBoxItem Content="Ржавец"/>
+                            <ComboBoxItem Content="Северный поселок"/>
+                            <ComboBoxItem Content="Сельхозпоселок"/>
+                            <ComboBoxItem Content="Семашко"/>
+                            <ComboBoxItem Content="Серебрянка"/>
+                            <ComboBoxItem Content="Серова"/>
+                            <ComboBoxItem Content="Слепянка"/>
+                            <ComboBoxItem Content="Сокол"/>
+                            <ComboBoxItem Content="Сосны"/>
+                            <ComboBoxItem Content="Степянка"/>
+                            <ComboBoxItem Content="Сторожовка"/>
+                            <ComboBoxItem Content="Сухарево"/>
+                            <ComboBoxItem Content="Троицкое предместье"/>
+                            <ComboBoxItem Content="Уручье"/>
+                            <ComboBoxItem Content="Харьковская"/>
+                            <ComboBoxItem Content="Чижовка"/>
+                            <ComboBoxItem Content="Шабаны"/>
+                            <ComboBoxItem Content="Юго-Запад"/>
+                        </ComboBox>
 
                         <TextBox Margin="0 20 0 0" x:Name="RoomsTextBox" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Кол-во комнат" Foreground="White"
-                         BorderBrush="White" CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}"/>
+                         CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}"/>
 
-                        <TextBox Margin="0 20 0 0" x:Name="RentalTypeTextBox" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Тип аренды" Foreground="White"
-                         BorderBrush="White" CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}"/>
+                        <ComboBox x:Name="RentalTypeTextBox" Foreground="White" Style="{StaticResource MaterialDesignFilledComboBox}" 
+                                  materialDesign:HintAssist.Hint="Тип аренды" Width="300" FontSize="18" Margin="0 20 0 0">
+                            <ComboBoxItem Content="Долгосрочная"/>
+                            <ComboBoxItem Content="На день"/>
+                        </ComboBox>
 
                         <TextBox Margin="0 20 0 0" x:Name="AreaTextBox" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Площадь" Foreground="White"
-                         BorderBrush="White" CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}"/>
+                         CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}"/>
 
-                        <TextBox Margin="0 20 0 0" x:Name="ToiletTextBox" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Санузел" Foreground="White"
-                         BorderBrush="White" CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}"/>
+                        <ComboBox x:Name="ToiletTextBox" Foreground="White" Style="{StaticResource MaterialDesignFilledComboBox}" 
+                                  materialDesign:HintAssist.Hint="Санузел" Width="300" FontSize="18" Margin="0 20 0 0">
+                            <ComboBoxItem Content="Раздельный"/>
+                            <ComboBoxItem Content="Совмещенный"/>
+                            <ComboBoxItem Content="Два"/>
+                            <ComboBoxItem Content="Три"/>
+                        </ComboBox>
 
-                        <TextBox x:Name="BalconyTextBox" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Балкон" Foreground="White"
-                         BorderBrush="White" CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}" Margin="0 20 0 0"/>
+                        <ComboBox x:Name="BalconyTextBox" Foreground="White" Style="{StaticResource MaterialDesignFilledComboBox}" 
+                                  materialDesign:HintAssist.Hint="Балкон" Width="300" FontSize="18" Margin="0 20 0 0">
+                            <ComboBoxItem Content="Есть"/>
+                            <ComboBoxItem Content="Нет"/>
+                            <ComboBoxItem Content="Лоджия"/>
+                            <ComboBoxItem Content="Два"/>
+                        </ComboBox>
 
                         <TextBox Margin="0 20 0 0" x:Name="FloorTextBox" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Этаж" Foreground="White"
-                         BorderBrush="White" CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}"/>
+                         CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}"/>
 
                         <TextBox Margin="0 20 0 0" x:Name="PriceTextBox" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Цена" Foreground="White"
-                         BorderBrush="White" CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}"/>
+                         CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}"/>
 
                         <TextBox x:Name="DescriptionTextBox" Width="300" Foreground="White" Style="{StaticResource MaterialDesignFilledTextBox}" TextWrapping="Wrap" MaxLength="3500" FontSize="18" materialDesign:TextFieldAssist.CharacterCounterVisibility="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxTextCountComboBox, Converter={StaticResource BooleanToVisibilityConverter}}" 
-                                     materialDesign:HintAssist.Hint="Описание" Margin="0 20 0 0" BorderBrush="White" CaretBrush="White"/>
+                                     materialDesign:HintAssist.Hint="Описание" Margin="0 20 0 0" CaretBrush="White"/>
 
                         <TextBox Margin="0 20 0 0" x:Name="ImageTextBox" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Изображение" Foreground="White"
-                         BorderBrush="White" CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}"/>
+                         CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}"/>
 
                         <Button Grid.Column="2" Content="Добавить" Style="{StaticResource MaterialDesignFlatMidBgButton}" BorderThickness="0" FontSize="18" 
                     Background="#00CC66" Foreground="White" materialDesign:ButtonAssist.CornerRadius="8" Margin="0 20 0 20" HorizontalAlignment="Center"

@@ -1,19 +1,22 @@
 ﻿using FlatRental.DataModel;
 using FlatRental.Model;
 using FlatRental.Model.Repository;
+using FlatRental.View;
+using FlatRental.View.AdminPages;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace FlatRental.ViewModel
 {
     public class OrdersVM : ObservableObject
     {
-        private ObservableCollection<Lease> _leaseList;
-        public ObservableCollection<Lease> LeaseList
+        private ObservableCollection<UserLease> _leaseList;
+        public ObservableCollection<UserLease> LeaseList
         {
             get
             {
@@ -22,24 +25,21 @@ namespace FlatRental.ViewModel
             set
             {
                 _leaseList = value;
-                OnPropertyChanged("FlatList");
+                OnPropertyChanged("LeaseList");
             }
         }
 
         private UnitOfWork _unitOfWork;
 
-        public OrdersVM() 
+        public OrdersVM()
         {
             _unitOfWork = new UnitOfWork();
 
-            LeaseList = new ObservableCollection<Lease>(_unitOfWork.Leases.GetAllItems());
-
-            if(LeaseList.Count != 0)
-                SelectedOrder = LeaseList.First();
+            LeaseList = new ObservableCollection<UserLease>(_unitOfWork.Leases.GetUserLeases());
         }
 
-        private Lease _selectedOrder;
-        public Lease SelectedOrder
+        private UserLease _selectedOrder;
+        public UserLease SelectedOrder
         {
             get
             {
@@ -48,10 +48,50 @@ namespace FlatRental.ViewModel
             set
             {
                 _selectedOrder = value;
-                OnPropertyChanged("SelectedItem");
+                OnPropertyChanged("SelectedOrder");
             }
         }
 
 
+        private ICommand _deleteItemCommand;
+        public ICommand DeleteItemCommand
+        {
+            get
+            {
+                return _deleteItemCommand ?? (_deleteItemCommand = new RelayCommand(obj =>
+                {
+                    try
+                    {
+                        _unitOfWork.Leases.Delete(SelectedOrder.Lease);
+
+                        LeaseList = new ObservableCollection<UserLease>(_unitOfWork.Leases.GetUserLeases());
+
+                        var result = new CustomMessageBox("Заказ удален",   
+                                            MessageType.Success,
+                                            MessageButtons.Ok).ShowDialog();
+                    }
+                    catch (Exception ex)
+                    {
+                        var result = new CustomMessageBox("Выберите заказ для удаления",
+                                    MessageType.Error,
+                                    MessageButtons.Ok).ShowDialog();
+                    }
+                }));
+            }
+        }
+
+        private ICommand _openEditOrderForm;
+        public ICommand OpenEditOrderFormCommand
+        {
+            get
+            {
+                return _openEditOrderForm ?? (_openEditOrderForm = new RelayCommand(onj =>
+                {
+                    EditOrderWindow editOrder = new EditOrderWindow();
+                    editOrder.DataContext = new EditOrderVM(this, SelectedOrder);
+                    editOrder.Show();
+                }));
+            }
+        }
     }
 }
