@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
 #pragma warning disable CS8602
@@ -179,8 +180,8 @@ namespace FlatRental.ViewModel
                 return _price;
             }
             set
-            {
-                _price = value;
+            {          
+                _price = Math.Round(value ?? 0, 2);
                 OnPropertyChanged("Price");
             }
         }
@@ -271,6 +272,21 @@ namespace FlatRental.ViewModel
                     }                 
                 }));
             }
+        }
+
+        //Validation
+        public void IntValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsDigit(char.Parse(e.Text)))
+            {
+                e.Handled = true;
+            }
+        }
+
+        public void FloatValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex(@"^[-A-Za-zA-Яа-я<>%$?!&_/^№*@#()," + "\"" + "+=:;']");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

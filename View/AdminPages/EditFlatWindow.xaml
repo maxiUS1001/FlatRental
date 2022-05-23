@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlatRental.ViewModel"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:model="clr-namespace:FlatRental.Model"   
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
         mc:Ignorable="d" ResizeMode="NoResize"
         Title="Изменить квартиру" Height="450" Width="450" WindowStartupLocation="CenterScreen" 
         AllowsTransparency="True" Background="Transparent" WindowStyle="None" x:Name="EditFlat">
@@ -135,7 +136,19 @@
                         </ComboBox>
 
                         <TextBox Margin="0 20 0 0" x:Name="RoomsTextBox" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Кол-во комнат" Foreground="White"
-                         CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}" Text="{Binding NumberOfRooms}"/>
+                         CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}">
+                            <Binding Path="NumberOfRooms" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules >
+                                    <model:PositiveIntValidationRule ErrorMessage="Введите кол-во комнат"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="PreviewTextInput">
+                                    <ei:CallMethodAction TargetObject="{Binding}" MethodName="IntValidationTextBox"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
 
                         <ComboBox x:Name="RentalTypeTextBox" Foreground="White" Style="{StaticResource MaterialDesignFilledComboBox}" 
                                   materialDesign:HintAssist.Hint="Тип аренды" Width="300" FontSize="18" Margin="0 20 0 0" Text="{Binding RentalType}">
@@ -144,7 +157,19 @@
                         </ComboBox>
 
                         <TextBox Margin="0 20 0 0" x:Name="AreaTextBox" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Площадь" Foreground="White"
-                         CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}" Text="{Binding Area}"/>
+                         CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}">
+                            <Binding Path="Area" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules >
+                                    <model:FloatValueValidationRule ErrorMessage="Введите площадь"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="PreviewTextInput">
+                                    <ei:CallMethodAction TargetObject="{Binding}" MethodName="FloatValidationTextBox"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
 
                         <ComboBox x:Name="ToiletTextBox" Foreground="White" Style="{StaticResource MaterialDesignFilledComboBox}" 
                                   materialDesign:HintAssist.Hint="Санузел" Width="300" FontSize="18" Margin="0 20 0 0" Text="{Binding Toilet}">
@@ -163,20 +188,107 @@
                         </ComboBox>
 
                         <TextBox Margin="0 20 0 0" x:Name="FloorTextBox" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Этаж" Foreground="White"
-                         CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}" Text="{Binding Floor}"/>
+                         CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}">
+                            <Binding Path="Floor" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <model:PositiveIntValidationRule ErrorMessage="Введите этаж"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="PreviewTextInput">
+                                    <ei:CallMethodAction TargetObject="{Binding}" MethodName="IntValidationTextBox"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
 
                         <TextBox Margin="0 20 0 0" x:Name="PriceTextBox" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Цена" Foreground="White"
-                         CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}" Text="{Binding Price, StringFormat={}{0:F2}}"/>
+                         CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}">
+                            <Binding Path="Price" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <model:FloatValueValidationRule ErrorMessage="Введите цену"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="PreviewTextInput">
+                                    <ei:CallMethodAction TargetObject="{Binding}" MethodName="FloatValidationTextBox"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
 
                         <TextBox x:Name="DescriptionTextBox" Width="300" Foreground="White" Style="{StaticResource MaterialDesignFilledTextBox}" TextWrapping="Wrap" MaxLength="3500" FontSize="18" materialDesign:TextFieldAssist.CharacterCounterVisibility="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxTextCountComboBox, Converter={StaticResource BooleanToVisibilityConverter}}" 
-                                     materialDesign:HintAssist.Hint="Описание" Margin="0 20 0 0" Text="{Binding Description}" CaretBrush="White"/>
-                        
-                        <TextBox Margin="0 20 0 0" x:Name="ImageTextBox" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Изображение" Foreground="White"
-                         CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}" Text="{Binding Image}"/>
+                                     materialDesign:HintAssist.Hint="Описание" Margin="0 20 0 0" CaretBrush="White">
+                            <Binding Path="Description" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules >
+                                    <model:EmptyStringValidationRule ErrorMessage="Напишите описание"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox>
 
-                        <Button Grid.Column="2" Content="Изменить" Style="{StaticResource MaterialDesignFlatMidBgButton}" BorderThickness="0" FontSize="18" 
+                        <TextBox Margin="0 20 0 0" x:Name="ImageTextBox" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Изображение" Foreground="White"
+                         CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}">
+                            <Binding Path="Image" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules >
+                                    <model:EmptyStringValidationRule ErrorMessage="Вставьте ссылку"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox>
+
+                        <Button Grid.Column="2" Content="Изменить" BorderThickness="0" FontSize="18" 
                     Background="#00CC66" Foreground="White" materialDesign:ButtonAssist.CornerRadius="8" Margin="0 20 0 20" HorizontalAlignment="Center"
-                                Command="{Binding EditFlatCommand}" CommandParameter="{Binding ElementName=EditFlat}"/>
+                                Command="{Binding EditFlatCommand}" CommandParameter="{Binding ElementName=EditFlat}">
+                            <Button.Style>
+
+                                <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatMidBgButton}">
+                                    <Style.Triggers>
+
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=FloorTextBox}" Value="True"/>
+                                            </MultiDataTrigger.Conditions>
+                                            <Setter Property="IsEnabled" Value="False"/>
+                                        </MultiDataTrigger>
+
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=RoomsTextBox}" Value="True"/>
+                                            </MultiDataTrigger.Conditions>
+                                            <Setter Property="IsEnabled" Value="False"/>
+                                        </MultiDataTrigger>
+
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=PriceTextBox}" Value="True"/>
+                                            </MultiDataTrigger.Conditions>
+                                            <Setter Property="IsEnabled" Value="False"/>
+                                        </MultiDataTrigger>
+
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=AreaTextBox}" Value="True"/>
+                                            </MultiDataTrigger.Conditions>
+                                            <Setter Property="IsEnabled" Value="False"/>
+                                        </MultiDataTrigger>
+
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding ElementName=DescriptionTextBox, Path=Text.Length}" Value="0" />
+                                            </MultiDataTrigger.Conditions>
+                                            <Setter Property="IsEnabled" Value="False" />
+                                        </MultiDataTrigger>
+                                        
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding ElementName=ImageTextBox, Path=Text.Length}" Value="0" />
+                                            </MultiDataTrigger.Conditions>
+                                            <Setter Property="IsEnabled" Value="False" />
+                                        </MultiDataTrigger>
+                                     
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
                     </StackPanel>
                
             </StackPanel>

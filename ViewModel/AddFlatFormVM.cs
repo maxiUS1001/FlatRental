@@ -14,6 +14,7 @@ using System.Windows.Input;
 
 using System.Diagnostics;
 using FlatRental.Model.Repository;
+using System.Text.RegularExpressions;
 
 namespace FlatRental.ViewModel
 {
@@ -30,6 +31,175 @@ namespace FlatRental.ViewModel
 
             _unitOfWork = new UnitOfWork();
         }
+
+        private string? _metro;
+        public string? Metro
+        {
+            get
+            {
+                return _metro;
+            }
+            set
+            {
+                _metro = value;
+                OnPropertyChanged("Metro");
+            }
+        }
+
+        private string? _district;
+        public string? District
+        {
+            get
+            {
+                return _district;
+            }
+            set
+            {
+                _district = value;
+                OnPropertyChanged("District");
+            }
+        }
+
+        private string? _microdistrict;
+        public string? Мicrodistrict
+        {
+            get
+            {
+                return _microdistrict;
+            }
+            set
+            {
+                _microdistrict = value;
+                OnPropertyChanged("Microdistrict");
+            }
+        }
+
+        private int? _numberOfRooms;
+        public int? NumberOfRooms
+        {
+            get
+            {
+                return _numberOfRooms;
+            }
+            set
+            {
+                _numberOfRooms = value;
+                OnPropertyChanged("NumberOfRooms");
+            }
+        }
+
+        private string? _rentalType;
+        public string? RentalType
+        {
+            get
+            {
+                return _rentalType;
+            }
+            set
+            {
+                _rentalType = value;
+                OnPropertyChanged("RentalType");
+            }
+        }
+
+        private decimal? _area;
+        public decimal? Area
+        {
+            get
+            {
+                return _area;
+            }
+            set
+            {
+                _area = value;
+                OnPropertyChanged("Area");
+            }
+        }
+
+        private string? _toilet;
+        public string? Toilet
+        {
+            get
+            {
+                return _toilet;
+            }
+            set
+            {
+                _toilet = value;
+                OnPropertyChanged("Toilet");
+            }
+        }
+
+        private string? _balcony;
+        public string? Balcony
+        {
+            get
+            {
+                return _balcony;
+            }
+            set
+            {
+                _balcony = value;
+                OnPropertyChanged("Balcony");
+            }
+        }
+
+        private int? _floor;
+        public int? Floor
+        {
+            get
+            {
+                return _floor;
+            }
+            set
+            {
+                _floor = value;
+                OnPropertyChanged("Floor");
+            }
+        }
+
+        private decimal? _price;
+        public decimal? Price
+        {
+            get
+            {
+                return _price;
+            }
+            set
+            {
+                _price = value;
+                OnPropertyChanged("Price");
+            }
+        }
+
+        private string? _description;
+        public string? Description
+        {
+            get
+            {
+                return _description;
+            }
+            set
+            {
+                _description = value;
+                OnPropertyChanged("Description");
+            }
+        }
+
+        private string? _image;
+        public string? Image
+        {
+            get
+            {
+                return _image;
+            }
+            set
+            {
+                _image = value;
+                OnPropertyChanged("Image");
+            }
+        }
+
 
         //Close form
         private ICommand _closeFormCommand;
@@ -54,23 +224,23 @@ namespace FlatRental.ViewModel
             {
                 return _addFlatCommand ?? (_addFlatCommand = new RelayCommand(obj =>
                 {
-                    try
-                    {
+                    //try
+                    //{
                         AddFlatWindow addFlatForm = obj as AddFlatWindow;
 
                         Flat flat = new Flat();
-                        flat.Metro = addFlatForm.MetroTextBox.Text;
-                        flat.District = addFlatForm.DistrictTextBox.Text;
-                        flat.Мicrodistrict = addFlatForm.MicrodistrictTextBox.Text;
-                        flat.NumberOfRooms = int.Parse(addFlatForm.RoomsTextBox.Text);
-                        flat.RentalType = addFlatForm.RentalTypeTextBox.Text;
-                        flat.Area = decimal.Parse(addFlatForm.AreaTextBox.Text.Replace(".", ","));
-                        flat.Toilet = addFlatForm.ToiletTextBox.Text;
-                        flat.Balcony = addFlatForm.BalconyTextBox.Text;
-                        flat.Floor = int.Parse(addFlatForm.FloorTextBox.Text);
-                        flat.Price = decimal.Parse(addFlatForm.PriceTextBox.Text.Replace(".", ","));
-                        flat.Description = addFlatForm.DescriptionTextBox.Text;
-                        flat.Image = addFlatForm.ImageTextBox.Text;
+                        flat.Metro = Metro;
+                        flat.District = District;
+                        flat.Мicrodistrict = Мicrodistrict;
+                        flat.NumberOfRooms = NumberOfRooms;
+                        flat.RentalType = RentalType;
+                        flat.Area = Area;
+                        flat.Toilet = Toilet;
+                        flat.Balcony = Balcony;
+                        flat.Floor = Floor;
+                        flat.Price = Price;
+                        flat.Description = Description;
+                        flat.Image = Image;
 
                         if (Validation.CheckValid(flat))
                         {
@@ -84,15 +254,30 @@ namespace FlatRental.ViewModel
                            
                             addFlatForm.Close();
                         }
-                    }
-                    catch (Exception ex)
-                    {
-                        var result = new CustomMessageBox(ex.Message,
-                                    MessageType.Error,
-                                    MessageButtons.Ok).ShowDialog();
-                    }
+                    //}
+                    //catch (Exception ex)
+                    //{
+                    //    var result = new CustomMessageBox(ex.Message,
+                    //                MessageType.Error,
+                    //                MessageButtons.Ok).ShowDialog();
+                    //}
                 }));
             }
+        }
+
+        //Validation
+        public void IntValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsDigit(char.Parse(e.Text)))
+            {
+                e.Handled = true;
+            }
+        }
+
+        public void FloatValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex(@"^[-A-Za-zA-Яа-я<>%$?№!&_/^*@#()," + "\"" + "+=:;']");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

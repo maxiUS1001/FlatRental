@@ -118,7 +118,7 @@
                                 <Button Content="Отправить" Margin="10 0 0 0" materialDesign:ButtonAssist.CornerRadius="8" FontSize="18" BorderThickness="0" Command="{Binding AddReview}"
                                     Background="#00CC66" Foreground="White" Style="{StaticResource MaterialDesignFlatMidBgButton}" VerticalAlignment="Bottom" CommandParameter="{Binding ElementName=ShowFlat}"/>
                             </StackPanel>
-                            <ListView Margin="0 30 0 0"
+                            <ListView Margin="0 30 0 0" ScrollViewer.IsDeferredScrollingEnabled="True"
                       ItemsSource="{Binding ReviewList}" ItemTemplate="{StaticResource ResourceKey=ListTemplate}" Style="{StaticResource MaterialDesignCardsListBox}"/>
                         </StackPanel>
                         

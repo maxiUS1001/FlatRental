@@ -70,7 +70,7 @@ namespace FlatRental.ViewModel
                                             MessageType.Success,
                                             MessageButtons.Ok).ShowDialog();
                     }
-                    catch (Exception ex)
+                    catch
                     {
                         var result = new CustomMessageBox("Выберите заказ для удаления",
                                     MessageType.Error,
@@ -87,9 +87,18 @@ namespace FlatRental.ViewModel
             {
                 return _openEditOrderForm ?? (_openEditOrderForm = new RelayCommand(onj =>
                 {
-                    EditOrderWindow editOrder = new EditOrderWindow();
-                    editOrder.DataContext = new EditOrderVM(this, SelectedOrder);
-                    editOrder.Show();
+                    if (SelectedOrder != null)
+                    {
+                        EditOrderWindow editOrder = new EditOrderWindow();
+                        editOrder.DataContext = new EditOrderVM(this, SelectedOrder);
+                        editOrder.Show();
+                    }
+                    else
+                    {
+                        var result = new CustomMessageBox("Выберите заказ для изменения",
+                                    MessageType.Error,
+                                    MessageButtons.Ok).ShowDialog();
+                    }
                 }));
             }
         }

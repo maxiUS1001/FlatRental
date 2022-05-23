@@ -23,6 +23,7 @@ namespace FlatRental.DataModel
         public string? Мicrodistrict { get; set; }
 
         [Required(ErrorMessage = "Введите количество комнат")]
+        [RegularExpression(@"^[1-9]\d*$", ErrorMessage = "Кол-во комнат | Формат неверный. \n")]
         public int? NumberOfRooms { get; set; }
 
         [Required(ErrorMessage = "Выберите тип аренды")]
@@ -39,6 +40,7 @@ namespace FlatRental.DataModel
         public string? Balcony { get; set; }
 
         [Required(ErrorMessage = "Введите этаж")]
+        [RegularExpression(@"^[1-9]\d*$", ErrorMessage = "Этаж | Формат неверный. \n")]
         public int? Floor { get; set; }
 
         [Required(ErrorMessage = "Введите цену")]

@@ -85,7 +85,7 @@ namespace FlatRental.ViewModel
                                         MessageButtons.Ok).ShowDialog();
                         }
                     }
-                    catch (Exception ex)
+                    catch
                     {
                         var result = new CustomMessageBox("Проверьте данные",
                                         MessageType.Error,
