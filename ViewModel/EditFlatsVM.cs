@@ -106,13 +106,13 @@ namespace FlatRental.ViewModel
             {
                 return _openEditFlatFormCommand ?? (_openEditFlatFormCommand = new RelayCommand(obj =>
                 {
-                    try
+                    if (SelectedFlat != null)
                     {
                         EditFlatWindow editFlatWindow = new EditFlatWindow();
                         editFlatWindow.DataContext = new UpdateFlatsVM(this, SelectedFlat);
                         editFlatWindow.Show();
                     }
-                    catch (Exception ex)
+                    else
                     {
                         var result = new CustomMessageBox("Выберите квартиру для изменения",
                                     MessageType.Error,

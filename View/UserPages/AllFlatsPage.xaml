@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:FlatRental.ViewModel"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
       mc:Ignorable="d" 
       d:DesignHeight="570" d:DesignWidth="920"
       Title="AllFlatsPage">
@@ -14,26 +15,24 @@
 
     <Page.Resources>
         <DataTemplate x:Key="ListTemplate">
-            <Border CornerRadius="8" BorderThickness="0">
+            <Border CornerRadius="8" BorderThickness="0" Background="White" Cursor="Hand">
                 <StackPanel>
                     <Border Width="100" Height="100" CornerRadius="8" Margin="5">
                         <Border.Effect>
-                            <DropShadowEffect ShadowDepth="1" Color="White"/>
+                            <DropShadowEffect ShadowDepth="1" Color="#2A2C2D"/>
                         </Border.Effect>
                         <Border.Background>
                             <ImageBrush ImageSource="{Binding Image}"/>
                         </Border.Background>
                     </Border>
-                    <TextBlock Margin="5" Text="{Binding Price, StringFormat={}{0:C}}" FontSize="17" FontFamily="Franklin Gothic Medium" Foreground="White"/>
-                    <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5" Text="{Binding Price, StringFormat={}{0:C}}" FontSize="17" FontFamily="Franklin Gothic Medium" Foreground="#2A2C2D"/>
+                    <StackPanel Orientation="Horizontal" Margin="5 0 5 5">
                         <Image Source="{StaticResource metro_svg}" MaxHeight="20" MaxWidth="20"/>
-                        <TextBlock Margin="5 0" Text="{Binding Metro}" FontSize="15" Foreground="White"/>
+                        <TextBlock Margin="5 0 0 0" Text="{Binding Metro}" FontSize="15" Foreground="#2A2C2D"/>
                     </StackPanel>
                 </StackPanel>
             </Border>
         </DataTemplate>
-
-        
     </Page.Resources>
 
     <Grid>
@@ -41,13 +40,10 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="Test" HorizontalAlignment="Center" Margin="10" FontSize="28" VerticalAlignment="Center"/>
+        <TextBlock Text="Квартиры" HorizontalAlignment="Center" Margin="10" FontSize="28" VerticalAlignment="Center" Foreground="#00CC66"/>
         <StackPanel Grid.Row="1">
-            <ListView ScrollViewer.HorizontalScrollBarVisibility="Hidden" 
+            <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" materialDesign:ListBoxItemAssist.ShowSelection="False"
                       ItemsSource="{Binding FlatList}" ItemTemplate="{StaticResource ResourceKey=ListTemplate}" SelectedItem="{Binding SelectedFlat}">
-                <!--<ListView.Style>
-                    
-                </ListView.Style>-->
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel/>

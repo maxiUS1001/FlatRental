@@ -22,19 +22,19 @@
         <DataGrid x:Name="FlatsDataGrid" Style="{StaticResource MaterialDesignDataGrid}" ItemsSource="{Binding FlatList}" AutoGenerateColumns="False"
                   IsReadOnly="True" ColumnWidth="*" CanUserResizeColumns="False" CanUserReorderColumns="False" SelectedItem="{Binding SelectedFlat}" Background="#2A2C2D" BorderThickness="1">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Flat_ID" Binding="{Binding FlatId}"/>
-                <DataGridTextColumn Header="Metro" Binding="{Binding Metro}"/>
-                <DataGridTextColumn Header="District" Binding="{Binding District}"/>
-                <DataGridTextColumn Header="Microdistrict" Binding="{Binding Мicrodistrict}"/>
-                <DataGridTextColumn Header="NumberOfRooms" Binding="{Binding NumberOfRooms}"/>
-                <DataGridTextColumn Header="RentalType" Binding="{Binding RentalType}"/>
-                <DataGridTextColumn Header="Area" Binding="{Binding Area}"/>
-                <DataGridTextColumn Header="Toilet" Binding="{Binding Toilet}"/>
-                <DataGridTextColumn Header="Balcony" Binding="{Binding Balcony}"/>
-                <DataGridTextColumn Header="Floor" Binding="{Binding Floor}"/>
-                <DataGridTextColumn Header="Price" Binding="{Binding Price, StringFormat={}{0:F2}}"/>
-                <DataGridTextColumn Header="Description" Binding="{Binding Description}"/>
-                <DataGridTemplateColumn Header="Image">
+                <DataGridTextColumn Header="ID квартиры" Binding="{Binding FlatId}"/>
+                <DataGridTextColumn Header="Метро" Binding="{Binding Metro}"/>
+                <DataGridTextColumn Header="Район" Binding="{Binding District}"/>
+                <DataGridTextColumn Header="Микрорайон" Binding="{Binding Мicrodistrict}"/>
+                <DataGridTextColumn Header="Кол-во комнат" Binding="{Binding NumberOfRooms}"/>
+                <DataGridTextColumn Header="Тип аренды" Binding="{Binding RentalType}"/>
+                <DataGridTextColumn Header="Площадь" Binding="{Binding Area}"/>
+                <DataGridTextColumn Header="Санузел" Binding="{Binding Toilet}"/>
+                <DataGridTextColumn Header="Балкон" Binding="{Binding Balcony}"/>
+                <DataGridTextColumn Header="Этаж" Binding="{Binding Floor}"/>
+                <DataGridTextColumn Header="Цена" Binding="{Binding Price, StringFormat={}{0:F2}}"/>
+                <DataGridTextColumn Header="Описание" Binding="{Binding Description}"/>
+                <DataGridTemplateColumn Header="Фото">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Image Source="{Binding Image}"/>

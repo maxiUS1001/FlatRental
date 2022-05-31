@@ -25,14 +25,13 @@ namespace FlatRental.ViewModel
     {
         private Page _flatsBDPage = new View.AdminPages.FlatsBDPage();
         private Page _ordersPage = new View.AdminPages.OrdersPage();
+        private Page _profilePage = new View.ProfilePage();
+        private Page _reviewPage = new View.AdminPages.ReviewPage();
 
         private EditFlatsVM _editFlatsVM = new EditFlatsVM();
         private OrdersVM _ordersVM = new OrdersVM();
 
         private UnitOfWork _unitOfWork;
-
-        private bool _filterBool = true;
-        public SineEase easingFunction1 = new SineEase();
 
         public MainAdminWindowVM()
         {
@@ -65,6 +64,25 @@ namespace FlatRental.ViewModel
             {
                 _searchText = value;
                 OnPropertyChanged("SearchText");
+            }
+        }
+
+        private ICommand _exitCommand;
+        public ICommand ExitCommand
+        {
+            get
+            {
+                return _exitCommand ?? (_exitCommand = new RelayCommand(obj =>
+                {
+                    AdminWindow adminWindow = obj as AdminWindow;
+
+                    CurrentUser.ClearInstance();
+
+                    LoginWindow loginWindow = new LoginWindow();
+                    loginWindow.Show();
+
+                    adminWindow.Close();
+                }));
             }
         }
 
@@ -110,6 +128,19 @@ namespace FlatRental.ViewModel
             }
         }
 
+
+        //Open reviews page
+        private ICommand _reviewsPageCommand;
+        public ICommand ReviewsPageCommand
+        {
+            get
+            {
+                return _reviewsPageCommand ?? (_reviewsPageCommand = new RelayCommand(obj =>
+                {
+                    CurrentPage = _reviewPage;
+                }));
+            }
+        }
 
         //Open orders page
         private ICommand _ordersPageCommand;
@@ -196,30 +227,315 @@ namespace FlatRental.ViewModel
                 return _filterPanelCommand ?? (_filterPanelCommand = new RelayCommand(obj =>
                 {
                     var border = obj as Border;
-                    ThicknessAnimation OpenMn = new ThicknessAnimation();
-                    if (_filterBool == true)
-                    {
-                        OpenMn.From = new Thickness(10, -340, 0, 0);
-                        OpenMn.To = new Thickness(10, 0, 0, 0);
-                        _filterBool = false;
-                    }
-                    else
-                    {
-                        OpenMn.From = new Thickness(10, 0, 0, 0);
-                        OpenMn.To = new Thickness(10, -340, 0, 0);
-                        _filterBool = true;
-                    }
-
-                    OpenMn.Duration = TimeSpan.FromSeconds(0.5);
-                    easingFunction1.EasingMode = EasingMode.EaseOut;
-                    OpenMn.EasingFunction = easingFunction1;
-                    Storyboard strbrdmn = new Storyboard();
-                    Storyboard.SetTargetName(OpenMn, border.Name);
-                    Storyboard.SetTargetProperty(OpenMn, new PropertyPath("Margin"));
-                    strbrdmn.Children.Add(OpenMn);
-                    strbrdmn.Begin(border);
+                    FilterPanelAnimation.ShowOrHidePanel(border);
                 }));
             }
+        }
+
+        private ICommand _profilePageCommand;
+        public ICommand ProfilePageCommand
+        {
+            get
+            {
+                return _profilePageCommand ?? (_profilePageCommand = new RelayCommand(obj =>
+                {
+                    CurrentPage = _profilePage;
+                }));
+            }
+        }
+
+
+        private string? _metro;
+        public string? Metro
+        {
+            get
+            {
+                return _metro;
+            }
+            set
+            {
+                _metro = value;
+                OnPropertyChanged("Metro");
+            }
+        }
+
+        private string? _district;
+        public string? District
+        {
+            get
+            {
+                return _district;
+            }
+            set
+            {
+                _district = value;
+                OnPropertyChanged("District");
+            }
+        }
+
+        private string? _microdistrict;
+        public string? Мicrodistrict
+        {
+            get
+            {
+                return _microdistrict;
+            }
+            set
+            {
+                _microdistrict = value;
+                OnPropertyChanged("Microdistrict");
+            }
+        }
+
+        private string? _numberOfRooms;
+        public string? NumberOfRooms
+        {
+            get
+            {
+                return _numberOfRooms;
+            }
+            set
+            {
+                _numberOfRooms = value;
+                OnPropertyChanged("NumberOfRooms");
+            }
+        }
+
+        private string? _rentalType;
+        public string? RentalType
+        {
+            get
+            {
+                return _rentalType;
+            }
+            set
+            {
+                _rentalType = value;
+                OnPropertyChanged("RentalType");
+            }
+        }
+
+        private string? _areaFrom;
+        public string? AreaFrom
+        {
+            get
+            {
+                return _areaFrom;
+            }
+            set
+            {
+                _areaFrom = value;
+                OnPropertyChanged("AreaFrom");
+            }
+        }
+
+        private string? _areaTo;
+        public string? AreaTo
+        {
+            get
+            {
+                return _areaTo;
+            }
+            set
+            {
+                _areaTo = value;
+                OnPropertyChanged("AreaTo");
+            }
+        }
+
+        private string? _toilet;
+        public string? Toilet
+        {
+            get
+            {
+                return _toilet;
+            }
+            set
+            {
+                _toilet = value;
+                OnPropertyChanged("Toilet");
+            }
+        }
+
+        private string? _balcony;
+        public string? Balcony
+        {
+            get
+            {
+                return _balcony;
+            }
+            set
+            {
+                _balcony = value;
+                OnPropertyChanged("Balcony");
+            }
+        }
+
+        private string? _floor;
+        public string? Floor
+        {
+            get
+            {
+                return _floor;
+            }
+            set
+            {
+                _floor = value;
+                OnPropertyChanged("Floor");
+            }
+        }
+
+        private string? _priceTo;
+        public string? PriceTo
+        {
+            get
+            {
+                return _priceTo;
+            }
+            set
+            {
+                _priceTo = value;
+                OnPropertyChanged("PriceTo");
+            }
+        }
+
+        private string? _priceFrom;
+        public string? PriceFrom
+        {
+            get
+            {
+                return _priceFrom;
+            }
+            set
+            {
+                _priceFrom = value;
+                OnPropertyChanged("PriceFrom");
+            }
+        }
+
+
+        private ICommand _filterFlatsCommand;
+        public ICommand FilterFlatsCommand
+        {
+            get
+            {
+                return _filterFlatsCommand ?? (_filterFlatsCommand = new RelayCommand(obj =>
+                {
+                    AdminWindow adminWindow = obj as AdminWindow;
+                    adminWindow.FlatsRadioButton.IsChecked = true;
+
+                    CurrentPage = _flatsBDPage;
+
+                    var flatList = _unitOfWork.Flats.GetAllItems().ToList();
+
+                    if (!string.IsNullOrWhiteSpace(Metro))
+                    {
+                        if (Metro != "Любое")
+                        {
+                            flatList = flatList.Where(p => p.Metro == Metro).ToList();
+                        }
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(District))
+                    {
+                        if (District != "Любой")
+                        {
+                            flatList = flatList.Where(p => p.District == District).ToList();
+                        }
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(Мicrodistrict))
+                    {
+                        if (Мicrodistrict != "Любой")
+                        {
+                            flatList = flatList.Where(p => p.Мicrodistrict == Мicrodistrict).ToList();
+                        }
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(NumberOfRooms))
+                    {
+                        flatList = flatList.Where(p => p.NumberOfRooms == int.Parse(NumberOfRooms)).ToList();
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(RentalType))
+                    {
+                        if (RentalType != "Любой")
+                        {
+                            flatList = flatList.Where(p => p.RentalType == RentalType).ToList();
+                        }
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(Toilet))
+                    {
+                        if (Toilet != "Любой")
+                        {
+                            flatList = flatList.Where(p => p.Toilet == Toilet).ToList();
+                        }
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(Balcony))
+                    {
+                        if (Balcony != "Любой")
+                        {
+                            flatList = flatList.Where(p => p.Balcony == Balcony).ToList();
+                        }
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(Floor))
+                    {
+                        flatList = flatList.Where(p => p.Floor == int.Parse(Floor)).ToList();
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(PriceFrom) & !string.IsNullOrWhiteSpace(PriceTo))
+                    {
+                        flatList = flatList.Where(p => p.Price >= decimal.Parse(PriceFrom) & p.Price <= decimal.Parse(PriceTo)).ToList();
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(PriceTo) & string.IsNullOrWhiteSpace(PriceFrom))
+                    {
+                        flatList = flatList.Where(p => p.Price <= decimal.Parse(PriceTo)).ToList();
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(PriceFrom) & string.IsNullOrWhiteSpace(PriceTo))
+                    {
+                        flatList = flatList.Where(p => p.Price >= decimal.Parse(PriceFrom)).ToList();
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(AreaFrom) & !string.IsNullOrWhiteSpace(AreaTo))
+                    {
+                        flatList = flatList.Where(p => p.Area >= decimal.Parse(AreaFrom) & p.Area <= decimal.Parse(AreaTo)).ToList();
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(AreaTo) & string.IsNullOrWhiteSpace(AreaFrom))
+                    {
+                        flatList = flatList.Where(p => p.Area <= decimal.Parse(AreaTo)).ToList();
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(AreaFrom) & string.IsNullOrWhiteSpace(AreaTo))
+                    {
+                        flatList = flatList.Where(p => p.Area >= decimal.Parse(AreaFrom)).ToList();
+                    }
+
+                    _editFlatsVM.FlatList = new ObservableCollection<Flat>(flatList);
+
+                    FilterPanelAnimation.ShowOrHidePanel(adminWindow.FilterPanel);
+                }));
+            }
+        }
+
+        //Validation
+        public void IntValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsDigit(char.Parse(e.Text)))
+            {
+                e.Handled = true;
+            }
+        }
+
+        public void SearchValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex(@"^[-<>%$?!&_/^~`№*@#()" + "\"" + "+=:;']");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

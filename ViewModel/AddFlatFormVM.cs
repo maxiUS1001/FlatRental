@@ -10,8 +10,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Documents;
 using System.Windows.Input;
-
-
 using System.Diagnostics;
 using FlatRental.Model.Repository;
 using System.Text.RegularExpressions;
@@ -25,7 +23,7 @@ namespace FlatRental.ViewModel
 
         public AddFlatFormVM() { }
 
-        public AddFlatFormVM(EditFlatsVM editFlatsModel) 
+        public AddFlatFormVM(EditFlatsVM editFlatsModel)
         {
             _editFlatsModel = editFlatsModel;
 
@@ -224,8 +222,8 @@ namespace FlatRental.ViewModel
             {
                 return _addFlatCommand ?? (_addFlatCommand = new RelayCommand(obj =>
                 {
-                    //try
-                    //{
+                    try
+                    {
                         AddFlatWindow addFlatForm = obj as AddFlatWindow;
 
                         Flat flat = new Flat();
@@ -245,22 +243,22 @@ namespace FlatRental.ViewModel
                         if (Validation.CheckValid(flat))
                         {
                             _unitOfWork.Flats.Create(flat);
-                            
-                            _editFlatsModel.FlatList = new ObservableCollection<Flat>(_unitOfWork.Flats.GetAllItems());                          
-                            
+
+                            _editFlatsModel.FlatList = new ObservableCollection<Flat>(_unitOfWork.Flats.GetAllItems());
+
                             var result = new CustomMessageBox("Квартира добавлена",
                                         MessageType.Success,
                                         MessageButtons.Ok).ShowDialog();
-                           
+
                             addFlatForm.Close();
                         }
-                    //}
-                    //catch (Exception ex)
-                    //{
-                    //    var result = new CustomMessageBox(ex.Message,
-                    //                MessageType.Error,
-                    //                MessageButtons.Ok).ShowDialog();
-                    //}
+                    }
+                    catch (Exception ex)
+                    {
+                        var result = new CustomMessageBox(ex.Message,
+                                    MessageType.Error,
+                                    MessageButtons.Ok).ShowDialog();
+                    }
                 }));
             }
         }

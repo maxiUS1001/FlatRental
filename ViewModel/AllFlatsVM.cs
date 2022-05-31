@@ -13,7 +13,17 @@ namespace FlatRental.ViewModel
 {
     public class AllFlatsVM : ObservableObject
     {
-        public ObservableCollection<Flat> FlatList { get; set; }
+        private ObservableCollection<Flat> _flatList;
+        public ObservableCollection<Flat> FlatList
+        {
+            get { return _flatList; }
+            set
+            {
+                _flatList = value;
+                OnPropertyChanged("FlatList");
+            }
+        }
+        
         private MainUserWindowVM _mainUser;
         private UnitOfWork _unitOfWork;
 

@@ -240,18 +240,18 @@ namespace FlatRental.ViewModel
                     {
                         EditFlatWindow editFlatWindow = obj as EditFlatWindow;
 
-                        _flat.Metro = editFlatWindow.MetroTextBox.Text;
-                        _flat.District = editFlatWindow.DistrictTextBox.Text;
-                        _flat.Мicrodistrict = editFlatWindow.MicrodistrictTextBox.Text;
-                        _flat.NumberOfRooms = int.Parse(editFlatWindow.RoomsTextBox.Text);
-                        _flat.RentalType = editFlatWindow.RentalTypeTextBox.Text;
-                        _flat.Area = decimal.Parse(editFlatWindow.AreaTextBox.Text.Replace(".", ","));
-                        _flat.Toilet = editFlatWindow.ToiletTextBox.Text;
-                        _flat.Balcony = editFlatWindow.BalconyTextBox.Text;
-                        _flat.Floor = int.Parse(editFlatWindow.FloorTextBox.Text);
-                        _flat.Price = decimal.Parse(editFlatWindow.PriceTextBox.Text.Replace(".", ","));
-                        _flat.Description = editFlatWindow.DescriptionTextBox.Text;
-                        _flat.Image = editFlatWindow.ImageTextBox.Text;
+                        _flat.Metro = Metro;
+                        _flat.District = District;
+                        _flat.Мicrodistrict = Мicrodistrict;
+                        _flat.NumberOfRooms = NumberOfRooms;
+                        _flat.RentalType = RentalType;
+                        _flat.Area = Area;
+                        _flat.Toilet = Toilet;
+                        _flat.Balcony = Balcony;
+                        _flat.Floor = Floor;
+                        _flat.Price = Price;
+                        _flat.Description = Description;
+                        _flat.Image = Image;
 
                         if (Validation.CheckValid(_flat))
                         {

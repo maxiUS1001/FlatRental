@@ -14,7 +14,7 @@ namespace FlatRental.DataModel
         public int UserId { get; set; }
 
         [Required(ErrorMessage = "Email | Введите ваш Email\n")]
-        [RegularExpression(@"^[-a-z0-9!#$%&'*+/=?^_`{|}~]+(\.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@([a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?\.)*(aero|arpa|asia|biz|by|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|ru|tel|travel|[a-z][a-z])$", ErrorMessage = "Email | Формат неверный. \n")]
+        [RegularExpression(@"^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$", ErrorMessage = "Email | Формат неверный. \n")]
         public string? Login { get; set; }
 
         [Required(ErrorMessage = "Пароль | Введите пароль \n")]
@@ -27,7 +27,7 @@ namespace FlatRental.DataModel
         public string? Name { get; set; }
 
         [Required(ErrorMessage = "Телефон | Введите номер телефона \n")]
-        [RegularExpression(@"^\+375(29|33|44|25|17)[0-9]{7}$", ErrorMessage = "Телефон | Формат неверный.\n")]
+        [RegularExpression(@"^\+375(29|33|44|25)[0-9]{7}$", ErrorMessage = "Телефон | Формат неверный.\n")]
         public string? PhoneNumber { get; set; }
 
         public int? RoleId { get; set; }

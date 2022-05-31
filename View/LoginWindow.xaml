@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:FlatRental.ViewModel"
         mc:Ignorable="d" x:Name="Login"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:styles="clr-namespace:FlatRental.Styles"
         Height="550" Width="450" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True"
         ResizeMode="NoResize" Background="Transparent">
 
@@ -23,12 +24,8 @@
                 <TextBox Margin="0 50 0 0" x:Name="EmailTextBox" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Email" Foreground="White"
                          CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}" Text="{Binding Email}"/>
 
-                <!--<PasswordBox Margin="0 20 0 0" x:Name="PasswordTextBox" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Пароль" Foreground="White"
-                         BorderBrush="White" CaretBrush="White" Style="{StaticResource MaterialDesignFilledPasswordBox}"/>-->
+                <styles:BindablePasswordBox Margin="0 20 0 0" x:Name="PasswordTextBox" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Пароль" Foreground="White" Password="{Binding Password}"/>
 
-                <TextBox Margin="0 20 0 0" x:Name="PasswordTextBox" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Пароль" Foreground="White"
-                         CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}" Text="{Binding Password}"/>
-                
                 <Button Margin="0 20 0 0" x:Name="SignInButton" Style="{StaticResource MaterialDesignFlatMidBgButton}" BorderThickness="0" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=Login}"
                         Height="53" Width="300" materialDesign:ButtonAssist.CornerRadius="8" FontSize="18" Content="Войти" Background="#00CC66" Foreground="White"/>
 

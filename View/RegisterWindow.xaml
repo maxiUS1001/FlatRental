@@ -4,8 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlatRental.ViewModel"
+        xmlns:model="clr-namespace:FlatRental.Model"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
         mc:Ignorable="d" x:Name="Register"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+        xmlns:styles="clr-namespace:FlatRental.Styles"
         Title="RegisterWindow" Height="550" Width="450" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" 
         WindowStyle="None" AllowsTransparency="True" Background="Transparent">
 
@@ -20,19 +23,72 @@
                 <TextBlock HorizontalAlignment="Center" FontWeight="SemiBold" Foreground="#00CC66" Text="Регистрация" FontSize="28"/>
 
                 <TextBox Margin="0 20 0 0" x:Name="EmailTextBox" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Email" Foreground="White"
-                         CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}"/>
+                         CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}">
+                    <Binding Path="Login" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules >
+                            <model:EmailValidationRule ErrorMessage="Введите email"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox>
 
                 <TextBox Margin="0 20 0 0" x:Name="UsernameTextBox" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Имя" Foreground="White"
-                         CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}"/>
+                         CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}">
+                    <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules >
+                            <model:NameValidationRule ErrorMessage="Введите имя"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="PreviewTextInput">
+                            <ei:CallMethodAction TargetObject="{Binding}" MethodName="LettersValidationTextBox"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </TextBox>
 
                 <TextBox Margin="0 20 0 0" x:Name="PhoneTextBox" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Номер телефона" Foreground="White"
-                         CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}"/>
+                         CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}">
+                    <Binding Path="PhoneNumber" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <model:TelephoneValidationRule ErrorMessage="Введите номер телефона"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox>
 
-                <PasswordBox Margin="0 20 0 0" x:Name="PasswordTextBox" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Пароль" Foreground="White"
-                         CaretBrush="White" Style="{StaticResource MaterialDesignFilledPasswordBox}"/>
+                <styles:BindablePasswordBox Margin="0 20 0 0" x:Name="PasswordTextBox" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Пароль" Foreground="White" Password="{Binding Password}"/>
 
-                <Button Margin="0 20 0 0" Style="{StaticResource MaterialDesignFlatMidBgButton}" BorderThickness="0" Command="{Binding AddUserCommand}" CommandParameter="{Binding ElementName=Register}"
-                        Height="53" Width="300" materialDesign:ButtonAssist.CornerRadius="8" FontSize="18" Content="Создать аккаунт" Background="#00CC66" Foreground="White"/>
+                <Button Margin="0 20 0 0" BorderThickness="0" Command="{Binding AddUserCommand}" CommandParameter="{Binding ElementName=Register}"
+                        Height="53" Width="300" materialDesign:ButtonAssist.CornerRadius="8" FontSize="18" Content="Создать аккаунт" Background="#00CC66" Foreground="White">
+
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatMidBgButton}">
+                            <Style.Triggers>
+
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=EmailTextBox}" Value="True"/>
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="IsEnabled" Value="False"/>
+                                </MultiDataTrigger>
+
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=UsernameTextBox}" Value="True"/>
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="IsEnabled" Value="False"/>
+                                </MultiDataTrigger>
+
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=PhoneTextBox}" Value="True"/>
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="IsEnabled" Value="False"/>
+                                </MultiDataTrigger>
+
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
             </StackPanel>
         </Grid>
     </Border>

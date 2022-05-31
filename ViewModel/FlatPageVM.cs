@@ -6,6 +6,7 @@ using FlatRental.View.UserPages;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -59,20 +60,32 @@ namespace FlatRental.ViewModel
                 {
                     if(CurrentFlat.RentalType == "На день")
                     {
-                        Lease lease = new Lease();
-                        lease.FlatId = CurrentFlat.FlatId;
-                        lease.UserId = CurrentUser.GetInstance().UserId;
+                        var item = _unitOfWork.Users.GetUserOrders().Where(t => t.Flat.FlatId == CurrentFlat.FlatId).FirstOrDefault();
 
-                        lease.StartDate = DateTime.Now;
-                        lease.EndDate = DateTime.Now.AddDays(1);
-                        //lease.TotalSum = (endDate.DayOfYear - startDate.DayOfYear) * CurrentFlat.Price;
-                        lease.TotalSum = CurrentFlat.Price;
+                        if (item == null)
+                        {
+                            Lease lease = new Lease();
+                            lease.FlatId = CurrentFlat.FlatId;
+                            lease.UserId = CurrentUser.GetInstance().UserId;
 
-                        _unitOfWork.Leases.Create(lease);
+                            lease.StartDate = DateTime.Now;
+                            lease.EndDate = DateTime.Now.AddDays(1);
+                            //lease.TotalSum = (endDate.DayOfYear - startDate.DayOfYear) * CurrentFlat.Price;
+                            lease.TotalSum = CurrentFlat.Price;
 
-                        var result = new CustomMessageBox("Заявка отправлена",
-                                            MessageType.Success,
-                                            MessageButtons.Ok).ShowDialog();
+                            _unitOfWork.Leases.Create(lease);
+
+                            var result = new CustomMessageBox("Заявка отправлена",
+                                                MessageType.Success,
+                                                MessageButtons.Ok).ShowDialog();
+                        }
+                        else
+                        {
+                            var result = new CustomMessageBox("Квартира уже добавлена",
+                                    MessageType.Error,
+                                    MessageButtons.Ok).ShowDialog();
+                        }
+                        
                     }
                     if (CurrentFlat.RentalType == "Долгосрочная")
                     {
@@ -91,7 +104,7 @@ namespace FlatRental.ViewModel
             set
             {
                 _review = value;
-                OnPropertyChanged("Comment");
+                OnPropertyChanged("Review");
             }
         }
 
@@ -102,19 +115,20 @@ namespace FlatRental.ViewModel
             {
                 return _addReview ?? (_addReview = new RelayCommand(obj =>
                 {
-                    FlatPage flatPage = obj as FlatPage;
+                    if (!string.IsNullOrEmpty(Review))
+                    {
+                        Review review = new Review();
+                        review.DateOfReview = DateTime.Now;
+                        review.FlatId = CurrentFlat.FlatId;
+                        review.UserId = CurrentUser.GetInstance().UserId;
+                        review.Text = Review;
 
-                    Review review = new Review();
-                    review.DateOfReview = DateTime.Now;
-                    review.FlatId = CurrentFlat.FlatId;
-                    review.UserId = CurrentUser.GetInstance().UserId;
-                    review.Text = Review;
+                        _unitOfWork.Reviews.Create(review);
 
-                    _unitOfWork.Reviews.Create(review);
+                        ReviewList = _unitOfWork.Reviews.GetUserReviewAboutFlat(CurrentFlat);
 
-                    ReviewList = _unitOfWork.Reviews.GetUserReviewAboutFlat(CurrentFlat);
-
-                    flatPage.ReviewTextBox.Text = "";
+                        Review = "";
+                    }                   
                 }));
             }
         }

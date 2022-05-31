@@ -27,8 +27,8 @@
                 <DataGridTextColumn Header="ID пользователя" Binding="{Binding User.UserId}"/>
                 <DataGridTextColumn Header="Имя заказчика" Binding="{Binding User.Name}"/>
                 <DataGridTextColumn Header="Телефон заказчика" Binding="{Binding User.PhoneNumber}"/>
-                <DataGridTextColumn Header="Начало аренды" Binding="{Binding Lease.StartDate, StringFormat={}{0:d}}"/>
-                <DataGridTextColumn Header="Конец аренды" Binding="{Binding Lease.EndDate, StringFormat={}{0:d}}"/>
+                <DataGridTextColumn Header="Начало аренды" Binding="{Binding Lease.StartDate, StringFormat={}{0:dd/MM/yyyy}}"/>
+                <DataGridTextColumn Header="Конец аренды" Binding="{Binding Lease.EndDate, StringFormat={}{0:dd/MM/yyyy}}"/>
                 <DataGridTextColumn Header="Сумма" Binding="{Binding Lease.TotalSum, StringFormat={}{0:F2}}"/>
             </DataGrid.Columns>
         </DataGrid>

@@ -186,7 +186,7 @@
     <Style x:Key="FilterStyle"
            TargetType="Border">
         <Setter Property="Width"
-                Value="860"/>
+                Value="500"/>
         <Setter Property="Background"
                 Value="#303233"/>
         <Setter Property="VerticalAlignment"

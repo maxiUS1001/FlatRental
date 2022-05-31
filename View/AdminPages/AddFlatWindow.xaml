@@ -33,7 +33,7 @@
                     <StackPanel VerticalAlignment="Center">
 
                         <ComboBox x:Name="MetroTextBox" Foreground="White" Style="{StaticResource MaterialDesignFilledComboBox}" 
-                                  materialDesign:HintAssist.Hint="Метро" Width="300" FontSize="18" Margin="0 20 0 0">
+                                  materialDesign:HintAssist.Hint="Метро" Width="300" FontSize="18" Margin="0 20 0 0" Text="{Binding Metro}">
                             <ComboBoxItem Content="Автозаводская"/>
                             <ComboBoxItem Content="Академия наук"/>
                             <ComboBoxItem Content="Борисовский тракт"/>
@@ -66,18 +66,10 @@
                             <ComboBoxItem Content="Уручье"/>
                             <ComboBoxItem Content="Фрунзенская"/>
                             <ComboBoxItem Content="Юбилейная площадь"/>
-
-                            <ComboBox.Text>
-                                <Binding Path="Metro" UpdateSourceTrigger="PropertyChanged">
-                                    <Binding.ValidationRules>
-                                        <model:EmptyStringValidationRule ErrorMessage="Выберите метро"/>
-                                    </Binding.ValidationRules>
-                                </Binding>
-                            </ComboBox.Text>
                         </ComboBox>
 
                         <ComboBox x:Name="DistrictTextBox" Foreground="White" Style="{StaticResource MaterialDesignFilledComboBox}" 
-                                  materialDesign:HintAssist.Hint="Район" Width="300" FontSize="18" Margin="0 20 0 0">
+                                  materialDesign:HintAssist.Hint="Район" Width="300" FontSize="18" Margin="0 20 0 0" Text="{Binding District}">
                             <ComboBoxItem Content="Заводской"/>
                             <ComboBoxItem Content="Ленинский"/>
                             <ComboBoxItem Content="Московский"/>
@@ -87,18 +79,10 @@
                             <ComboBoxItem Content="Советский"/>
                             <ComboBoxItem Content="Фрунзенский"/>
                             <ComboBoxItem Content="Центральный"/>
-
-                            <ComboBox.Text>
-                                <Binding Path="District" UpdateSourceTrigger="PropertyChanged">
-                                    <Binding.ValidationRules>
-                                        <model:EmptyStringValidationRule ErrorMessage="Выберите район"/>
-                                    </Binding.ValidationRules>
-                                </Binding>
-                            </ComboBox.Text>
                         </ComboBox>
 
                         <ComboBox x:Name="MicrodistrictTextBox" Foreground="White" Style="{StaticResource MaterialDesignFilledComboBox}" 
-                                  materialDesign:HintAssist.Hint="Микрорайон" Width="300" FontSize="18" Margin="0 20 0 0">
+                                  materialDesign:HintAssist.Hint="Микрорайон" Width="300" FontSize="18" Margin="0 20 0 0" Text="{Binding Мicrodistrict}">
                             <ComboBoxItem Content="Академия наук"/>
                             <ComboBoxItem Content="Ангарская"/>
                             <ComboBoxItem Content="Аэродромная"/>
@@ -152,14 +136,6 @@
                             <ComboBoxItem Content="Чижовка"/>
                             <ComboBoxItem Content="Шабаны"/>
                             <ComboBoxItem Content="Юго-Запад"/>
-
-                            <ComboBox.Text>
-                                <Binding Path="Мicrodistrict" UpdateSourceTrigger="PropertyChanged">
-                                    <Binding.ValidationRules>
-                                        <model:EmptyStringValidationRule ErrorMessage="Выберите микрорайон"/>
-                                    </Binding.ValidationRules>
-                                </Binding>
-                            </ComboBox.Text>
                         </ComboBox>
 
                         <TextBox Margin="0 20 0 0" x:Name="RoomsTextBox" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Кол-во комнат" Foreground="White"
@@ -178,17 +154,9 @@
                         </TextBox>
 
                         <ComboBox x:Name="RentalTypeTextBox" Foreground="White" Style="{StaticResource MaterialDesignFilledComboBox}" 
-                                  materialDesign:HintAssist.Hint="Тип аренды" Width="300" FontSize="18" Margin="0 20 0 0">
+                                  materialDesign:HintAssist.Hint="Тип аренды" Width="300" FontSize="18" Margin="0 20 0 0" Text="{Binding RentalType}">
                             <ComboBoxItem Content="Долгосрочная"/>
                             <ComboBoxItem Content="На день"/>
-
-                            <ComboBox.Text>
-                                <Binding Path="RentalType" UpdateSourceTrigger="PropertyChanged">
-                                    <Binding.ValidationRules>
-                                        <model:EmptyStringValidationRule ErrorMessage="Выберите тип аренды"/>
-                                    </Binding.ValidationRules>
-                                </Binding>
-                            </ComboBox.Text>
                         </ComboBox>
 
                         <TextBox Margin="0 20 0 0" x:Name="AreaTextBox" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Площадь" Foreground="White"
@@ -207,35 +175,19 @@
                         </TextBox>
 
                         <ComboBox x:Name="ToiletTextBox" Foreground="White" Style="{StaticResource MaterialDesignFilledComboBox}" 
-                                  materialDesign:HintAssist.Hint="Санузел" Width="300" FontSize="18" Margin="0 20 0 0">
+                                  materialDesign:HintAssist.Hint="Санузел" Width="300" FontSize="18" Margin="0 20 0 0" Text="{Binding Toilet}">
                             <ComboBoxItem Content="Раздельный"/>
                             <ComboBoxItem Content="Совмещенный"/>
                             <ComboBoxItem Content="Два"/>
                             <ComboBoxItem Content="Три"/>
-
-                            <ComboBox.Text>
-                                <Binding Path="Toilet" UpdateSourceTrigger="PropertyChanged">
-                                    <Binding.ValidationRules>
-                                        <model:EmptyStringValidationRule ErrorMessage="Выберите санузел"/>
-                                    </Binding.ValidationRules>
-                                </Binding>
-                            </ComboBox.Text>
                         </ComboBox>
 
                         <ComboBox x:Name="BalconyTextBox" Foreground="White" Style="{StaticResource MaterialDesignFilledComboBox}" 
-                                  materialDesign:HintAssist.Hint="Балкон" Width="300" FontSize="18" Margin="0 20 0 0">
+                                  materialDesign:HintAssist.Hint="Балкон" Width="300" FontSize="18" Margin="0 20 0 0" Text="{Binding Balcony}">
                             <ComboBoxItem Content="Есть"/>
                             <ComboBoxItem Content="Нет"/>
                             <ComboBoxItem Content="Лоджия"/>
                             <ComboBoxItem Content="Два"/>
-
-                            <ComboBox.Text>
-                                <Binding Path="Balcony" UpdateSourceTrigger="PropertyChanged">
-                                    <Binding.ValidationRules>
-                                        <model:EmptyStringValidationRule ErrorMessage="Выберите балкон"/>
-                                    </Binding.ValidationRules>
-                                </Binding>
-                            </ComboBox.Text>
                         </ComboBox>
 
                         <TextBox Margin="0 20 0 0" x:Name="FloorTextBox" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Этаж" Foreground="White"
@@ -365,6 +317,20 @@
 
                                         <MultiDataTrigger>
                                             <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=DescriptionTextBox}" Value="True"/>
+                                            </MultiDataTrigger.Conditions>
+                                            <Setter Property="IsEnabled" Value="False"/>
+                                        </MultiDataTrigger>
+
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=ImageTextBox}" Value="True"/>
+                                            </MultiDataTrigger.Conditions>
+                                            <Setter Property="IsEnabled" Value="False"/>
+                                        </MultiDataTrigger>
+
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
                                                 <Condition Binding="{Binding ElementName=DescriptionTextBox, Path=Text.Length}" Value="0" />
                                             </MultiDataTrigger.Conditions>
                                             <Setter Property="IsEnabled" Value="False" />
@@ -376,7 +342,7 @@
                                             </MultiDataTrigger.Conditions>
                                             <Setter Property="IsEnabled" Value="False" />
                                         </MultiDataTrigger>
-
+                                        
                                     </Style.Triggers>
                                 </Style>
                             </Button.Style>

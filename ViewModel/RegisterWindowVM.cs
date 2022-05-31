@@ -7,13 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-
 using Microsoft.AspNet.Identity;
 using FlatRental.Model.Repository;
+using System.Text.RegularExpressions;
 
 namespace FlatRental.ViewModel
 {
-    public class RegisterWindowVM
+    public class RegisterWindowVM : ObservableObject
     {
         private UnitOfWork _unitOfWork;
 
@@ -21,6 +21,51 @@ namespace FlatRental.ViewModel
         {
             _unitOfWork = new UnitOfWork();
         }
+
+        private string? _login;
+        public string? Login
+        {
+            get { return _login; }
+            set
+            {
+                _login = value;
+                OnPropertyChanged("Login");
+            }
+        }
+
+        private string? _password;
+        public string? Password
+        {
+            get { return _password; }
+            set
+            {
+                _password = value;
+                OnPropertyChanged("Password");
+            }
+        }
+
+        private string? _name;
+        public string? Name
+        {
+            get { return _name; }
+            set
+            {
+                _name = value;
+                OnPropertyChanged("Name");
+            }
+        }
+
+        private string? _phoneNumber;
+        public string? PhoneNumber
+        {
+            get { return _phoneNumber; }
+            set
+            {
+                _phoneNumber = value;
+                OnPropertyChanged("PhoneNumber");
+            }
+        }
+
 
         private ICommand _addUserCommand;
         public ICommand AddUserCommand
@@ -34,10 +79,10 @@ namespace FlatRental.ViewModel
                         RegisterWindow registerWindow = obj as RegisterWindow;
 
                         User user = new User();
-                        user.Login = registerWindow.EmailTextBox.Text;
-                        user.Name = registerWindow.UsernameTextBox.Text;
-                        user.PhoneNumber = registerWindow.PhoneTextBox.Text;
-                        user.Password = registerWindow.PasswordTextBox.Password;
+                        user.Login = Login;
+                        user.Name = Name;
+                        user.PhoneNumber = PhoneNumber;
+                        user.Password = Password;
                         user.RoleId = (int?)Roles.User;
 
                         
@@ -64,14 +109,21 @@ namespace FlatRental.ViewModel
                             }
                         }                     
                     }
-                    catch (Exception ex)
+                    catch
                     {
-                        var result = new CustomMessageBox(ex.Message,
+                        var result = new CustomMessageBox("Проверьте введенные данные",
                                     MessageType.Error,
                                     MessageButtons.Ok).ShowDialog();
                     }                
                 }));
             }
+        }
+
+        //Validation
+        public void LettersValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex(@"^[<>%$?№!&_/^.*@#()," + "\"" + "+=:;']");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

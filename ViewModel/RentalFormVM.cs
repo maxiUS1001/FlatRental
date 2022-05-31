@@ -62,25 +62,38 @@ namespace FlatRental.ViewModel
                     {
                         RentalFormWindow rentalForm = obj as RentalFormWindow;
 
-                        Lease lease = new Lease();
-                        lease.FlatId = _flatPage.CurrentFlat.FlatId;
-                        lease.UserId = CurrentUser.GetInstance().UserId;
+                        var item = _unitOfWork.Users.GetUserOrders().Where(t => t.Flat.FlatId == _flatPage.CurrentFlat.FlatId).FirstOrDefault();
 
-                        DateTime startDate = DateTime.Now;
-                        DateTime endDate = DateTime.Now.AddYears(HowManyYears);
+                        if (item == null)
+                        {
+                            
 
-                        lease.StartDate = startDate;
-                        lease.EndDate = endDate;
-                        //lease.TotalSum = (endDate - startDate).Days / 30 * _flatPage.CurrentFlat.Price;
-                        lease.TotalSum = _flatPage.CurrentFlat.Price;
+                            Lease lease = new Lease();
+                            lease.FlatId = _flatPage.CurrentFlat.FlatId;
+                            lease.UserId = CurrentUser.GetInstance().UserId;
 
-                        _unitOfWork.Leases.Create(lease);
+                            DateTime startDate = DateTime.Now;
+                            DateTime endDate = DateTime.Now.AddYears(HowManyYears);
+
+                            lease.StartDate = startDate;
+                            lease.EndDate = endDate;
+                            //lease.TotalSum = (endDate - startDate).Days / 30 * _flatPage.CurrentFlat.Price;
+                            lease.TotalSum = _flatPage.CurrentFlat.Price;
+
+                            _unitOfWork.Leases.Create(lease);
+
+                            var result = new CustomMessageBox("Заявка отправлена",
+                                                MessageType.Success,
+                                                MessageButtons.Ok).ShowDialog();
+                        }
+                        else
+                        {
+                            var result = new CustomMessageBox("Квартира уже добавлена",
+                                    MessageType.Error,
+                                    MessageButtons.Ok).ShowDialog();
+                        }
 
                         rentalForm.Close();
-
-                        var result = new CustomMessageBox("Заявка отправлена",
-                                            MessageType.Success,
-                                            MessageButtons.Ok).ShowDialog();
                     }
                     else
                     {

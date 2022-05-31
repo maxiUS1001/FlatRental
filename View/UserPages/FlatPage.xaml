@@ -28,7 +28,7 @@
     <Grid>
 
 
-        <ScrollViewer>
+        <ScrollViewer PreviewMouseWheel="ListView_PreviewMouseWheel">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -50,7 +50,7 @@
                 </Border>
 
                 <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left">
-                    <TextBlock Text="{Binding CurrentFlat.Price, StringFormat={}{0:C} за месяц}" Foreground="White" FontSize="18"/>
+                    <TextBlock Text="{Binding CurrentFlat.Price, StringFormat={}{0:C}}" Foreground="White" FontSize="18"/>
 
                     <StackPanel Orientation="Horizontal" Margin="0 20">
                         <Image Source="{StaticResource metro_svg}" MaxHeight="40" MaxWidth="40" VerticalAlignment="Center"/>
@@ -116,7 +116,7 @@
                                 <TextBox x:Name="ReviewTextBox" Width="500" Foreground="White" Style="{StaticResource MaterialDesignFilledTextBox}" TextWrapping="Wrap" MaxLength="3500" FontSize="18" materialDesign:TextFieldAssist.CharacterCounterVisibility="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxTextCountComboBox, Converter={StaticResource BooleanToVisibilityConverter}}" 
                                      materialDesign:HintAssist.Hint="Оставьте свой отзыв" Margin="0 20 0 0" BorderBrush="White" CaretBrush="White" Text="{Binding Review, Mode=TwoWay}"/>
                                 <Button Content="Отправить" Margin="10 0 0 0" materialDesign:ButtonAssist.CornerRadius="8" FontSize="18" BorderThickness="0" Command="{Binding AddReview}"
-                                    Background="#00CC66" Foreground="White" Style="{StaticResource MaterialDesignFlatMidBgButton}" VerticalAlignment="Bottom" CommandParameter="{Binding ElementName=ShowFlat}"/>
+                                    Background="#00CC66" Foreground="White" Style="{StaticResource MaterialDesignFlatMidBgButton}" VerticalAlignment="Bottom"/>
                             </StackPanel>
                             <ListView Margin="0 30 0 0" ScrollViewer.IsDeferredScrollingEnabled="True"
                       ItemsSource="{Binding ReviewList}" ItemTemplate="{StaticResource ResourceKey=ListTemplate}" Style="{StaticResource MaterialDesignCardsListBox}"/>

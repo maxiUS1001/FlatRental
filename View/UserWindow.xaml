@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlatRental.ViewModel"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
         mc:Ignorable="d"
         x:Name="User"
         MinHeight="650" MinWidth="1000"
@@ -34,7 +36,7 @@
                 </Button.Triggers>
             </Button>
 
-            <Border Style="{StaticResource ResourceKey=PanelStyle}" Grid.ColumnSpan="2" x:Name="HamMenuPanel" Panel.ZIndex="1"
+            <Border Style="{StaticResource ResourceKey=PanelStyle}" Grid.ColumnSpan="2" x:Name="HamMenuPanel" Panel.ZIndex="6"
                 Width="0">
                 <Grid>
 
@@ -52,10 +54,16 @@
                     </Button>
 
                     <StackPanel VerticalAlignment="Center">
-                        <RadioButton Style="{StaticResource MenuRadioButtonStyle}" Content="Квартиры" IsChecked="True" Command="{Binding AllFlatsPageCommand}"/>
-                        <RadioButton Style="{StaticResource MenuRadioButtonStyle}" Content="Заказы" Margin="0 10 0 0"/>
-                        <RadioButton Style="{StaticResource MenuRadioButtonStyle}" Content="Профиль" Margin="0 10 0 0"/>
+                        <RadioButton Style="{StaticResource MenuRadioButtonStyle}" Content="Каталог" IsChecked="True" Command="{Binding AllFlatsPageCommand}" x:Name="FlatsRadioButton"/>
+                        <RadioButton Style="{StaticResource MenuRadioButtonStyle}" Content="Мои заказы" Margin="0 10 0 0" Command="{Binding UserOrdersPageCommand}"/>
+                        <RadioButton Style="{StaticResource MenuRadioButtonStyle}" Content="Мой профиль" Margin="0 10 0 0" Command="{Binding ProfilePageCommand}"/>
                     </StackPanel>
+                    <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Bottom" Margin="0 0 0 10" Command="{Binding ExitCommand}" CommandParameter="{Binding ElementName=User}">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="15 0 0 0">
+                            <materialDesign:PackIcon Kind="ExitRun" VerticalAlignment="Center"/>
+                            <TextBlock Text="Выйти" VerticalAlignment="Center" Margin="5 0 0 0" FontSize="15" FontWeight="Normal"/>
+                        </StackPanel>
+                    </Button>
                 </Grid>
             </Border>
 
@@ -66,7 +74,247 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <StackPanel Grid.Column="4" Margin="0 10 10 0" HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Horizontal" FlowDirection="RightToLeft">
+                <Border Style="{StaticResource ResourceKey=FilterStyle}" Grid.Row="1" x:Name="FilterPanel"
+                Panel.ZIndex="2" VerticalAlignment="Top" Height="340" Margin="10,-340,0,0">
+                    <ScrollViewer Margin="0 0 10 0">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel Margin="20 0 0 0">
+                                    <ComboBox x:Name="MetroTextBox" Foreground="White" Style="{StaticResource MaterialDesignFilledComboBox}"
+                                  materialDesign:HintAssist.Hint="Метро" Width="200" FontSize="18" Margin="0 20 0 0" Text="{Binding Metro}">
+                                        <ComboBoxItem Content="Любое"/>
+                                        <ComboBoxItem Content="Автозаводская"/>
+                                        <ComboBoxItem Content="Академия наук"/>
+                                        <ComboBoxItem Content="Борисовский тракт"/>
+                                        <ComboBoxItem Content="Вокзальная"/>
+                                        <ComboBoxItem Content="Восток"/>
+                                        <ComboBoxItem Content="Грушевка"/>
+                                        <ComboBoxItem Content="Институт культуры"/>
+                                        <ComboBoxItem Content="Каменная Горка"/>
+                                        <ComboBoxItem Content="Ковальская Слобода"/>
+                                        <ComboBoxItem Content="Кунцевщина"/>
+                                        <ComboBoxItem Content="Малиновка"/>
+                                        <ComboBoxItem Content="Михалово"/>
+                                        <ComboBoxItem Content="Могилевская"/>
+                                        <ComboBoxItem Content="Молодежная"/>
+                                        <ComboBoxItem Content="Московская"/>
+                                        <ComboBoxItem Content="Немига"/>
+                                        <ComboBoxItem Content="Октябрьская (Купаловская)"/>
+                                        <ComboBoxItem Content="Парк Челюскинцев"/>
+                                        <ComboBoxItem Content="Партизанская"/>
+                                        <ComboBoxItem Content="Первомайская"/>
+                                        <ComboBoxItem Content="Петровщина"/>
+                                        <ComboBoxItem Content="Площадь Ленина"/>
+                                        <ComboBoxItem Content="Площадь Победы"/>
+                                        <ComboBoxItem Content="Площадь Франтишка Богушевича"/>
+                                        <ComboBoxItem Content="Площадь Якуба Коласа"/>
+                                        <ComboBoxItem Content="Пролетарская"/>
+                                        <ComboBoxItem Content="Пушкинская"/>
+                                        <ComboBoxItem Content="Спортивная"/>
+                                        <ComboBoxItem Content="Тракторный завод"/>
+                                        <ComboBoxItem Content="Уручье"/>
+                                        <ComboBoxItem Content="Фрунзенская"/>
+                                        <ComboBoxItem Content="Юбилейная площадь"/>
+                                    </ComboBox>
+
+                                    <ComboBox x:Name="DistrictTextBox" Foreground="White" Style="{StaticResource MaterialDesignFilledComboBox}" 
+                                  materialDesign:HintAssist.Hint="Район" Width="200" FontSize="18" Margin="0 20 0 0" Text="{Binding District}">
+                                        <ComboBoxItem Content="Любой"/>
+                                        <ComboBoxItem Content="Заводской"/>
+                                        <ComboBoxItem Content="Ленинский"/>
+                                        <ComboBoxItem Content="Московский"/>
+                                        <ComboBoxItem Content="Октябрьский"/>
+                                        <ComboBoxItem Content="Партизанский"/>
+                                        <ComboBoxItem Content="Первомайский"/>
+                                        <ComboBoxItem Content="Советский"/>
+                                        <ComboBoxItem Content="Фрунзенский"/>
+                                        <ComboBoxItem Content="Центральный"/>
+                                    </ComboBox>
+
+                                    <ComboBox x:Name="MicrodistrictTextBox" Foreground="White" Style="{StaticResource MaterialDesignFilledComboBox}" 
+                                  materialDesign:HintAssist.Hint="Микрорайон" Width="200" FontSize="18" Margin="0 20 0 0" Text="{Binding Мicrodistrict}">
+                                        <ComboBoxItem Content="Любой"/>
+                                        <ComboBoxItem Content="Академия наук"/>
+                                        <ComboBoxItem Content="Ангарская"/>
+                                        <ComboBoxItem Content="Аэродромная"/>
+                                        <ComboBoxItem Content="Боровая"/>
+                                        <ComboBoxItem Content="Боровляны"/>
+                                        <ComboBoxItem Content="Брилевичи"/>
+                                        <ComboBoxItem Content="Верхний город"/>
+                                        <ComboBoxItem Content="Веснянка"/>
+                                        <ComboBoxItem Content="Восток"/>
+                                        <ComboBoxItem Content="Восточный"/>
+                                        <ComboBoxItem Content="Грушевка"/>
+                                        <ComboBoxItem Content="Домбровка"/>
+                                        <ComboBoxItem Content="Дражня"/>
+                                        <ComboBoxItem Content="Запад"/>
+                                        <ComboBoxItem Content="Заславская"/>
+                                        <ComboBoxItem Content="Зацень"/>
+                                        <ComboBoxItem Content="Зеленый луг"/>
+                                        <ComboBoxItem Content="Каменная Горка"/>
+                                        <ComboBoxItem Content="Каскад"/>
+                                        <ComboBoxItem Content="Комаровка"/>
+                                        <ComboBoxItem Content="Красный Бор"/>
+                                        <ComboBoxItem Content="Кунцевщина"/>
+                                        <ComboBoxItem Content="Курасовщина"/>
+                                        <ComboBoxItem Content="Лебяжий"/>
+                                        <ComboBoxItem Content="Лошица"/>
+                                        <ComboBoxItem Content="Малиновка"/>
+                                        <ComboBoxItem Content="Масюковщина"/>
+                                        <ComboBoxItem Content="Медвежино"/>
+                                        <ComboBoxItem Content="Минск-Сити"/>
+                                        <ComboBoxItem Content="Михалово"/>
+                                        <ComboBoxItem Content="Новинки"/>
+                                        <ComboBoxItem Content="Озерище"/>
+                                        <ComboBoxItem Content="Поселок Радужный"/>
+                                        <ComboBoxItem Content="Пулихова"/>
+                                        <ComboBoxItem Content="Раковское шоссе"/>
+                                        <ComboBoxItem Content="Ржавец"/>
+                                        <ComboBoxItem Content="Северный поселок"/>
+                                        <ComboBoxItem Content="Сельхозпоселок"/>
+                                        <ComboBoxItem Content="Семашко"/>
+                                        <ComboBoxItem Content="Серебрянка"/>
+                                        <ComboBoxItem Content="Серова"/>
+                                        <ComboBoxItem Content="Слепянка"/>
+                                        <ComboBoxItem Content="Сокол"/>
+                                        <ComboBoxItem Content="Сосны"/>
+                                        <ComboBoxItem Content="Степянка"/>
+                                        <ComboBoxItem Content="Сторожовка"/>
+                                        <ComboBoxItem Content="Сухарево"/>
+                                        <ComboBoxItem Content="Троицкое предместье"/>
+                                        <ComboBoxItem Content="Уручье"/>
+                                        <ComboBoxItem Content="Харьковская"/>
+                                        <ComboBoxItem Content="Чижовка"/>
+                                        <ComboBoxItem Content="Шабаны"/>
+                                        <ComboBoxItem Content="Юго-Запад"/>
+                                    </ComboBox>
+
+                                    <TextBox Margin="0 20 0 0" x:Name="RoomsTextBox" Width="200" FontSize="18" materialDesign:HintAssist.Hint="Кол-во комнат" Foreground="White"
+                         CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="PreviewTextInput">
+                                                <ei:CallMethodAction TargetObject="{Binding}" MethodName="IntValidationTextBox"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </TextBox>
+
+                                    <ComboBox x:Name="RentalTypeTextBox" Foreground="White" Style="{StaticResource MaterialDesignFilledComboBox}" 
+                                  materialDesign:HintAssist.Hint="Тип аренды" Width="200" FontSize="18" Margin="0 20 0 0" Text="{Binding RentalType}">
+                                        <ComboBoxItem Content="Любой"/>
+                                        <ComboBoxItem Content="Долгосрочная"/>
+                                        <ComboBoxItem Content="На день"/>
+                                    </ComboBox>
+
+                                </StackPanel>
+
+                                <StackPanel Margin="20 0 0 0">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 46 0 0">
+                                        <TextBox materialDesign:HintAssist.Hint="От" Foreground="White" CaretBrush="White" Width="80" FontSize="18" Text="{Binding AreaFrom}">
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="PreviewTextInput">
+                                                    <ei:CallMethodAction TargetObject="{Binding}" MethodName="IntValidationTextBox"/>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </TextBox>
+                                        <TextBlock Text="-" FontSize="18" Foreground="White" VerticalAlignment="Center" Margin="5 0 5 0"/>
+                                        <TextBox materialDesign:HintAssist.Hint="До" Foreground="White" CaretBrush="White" Width="80" FontSize="18" Text="{Binding AreaTo}">
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="PreviewTextInput">
+                                                    <ei:CallMethodAction TargetObject="{Binding}" MethodName="IntValidationTextBox"/>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </TextBox>
+                                        <TextBlock Text="м²" FontSize="18" Foreground="White" VerticalAlignment="Center"/>
+                                    </StackPanel>
+
+                                    <ComboBox x:Name="ToiletTextBox" Foreground="White" Style="{StaticResource MaterialDesignFilledComboBox}" 
+                                  materialDesign:HintAssist.Hint="Санузел" Width="200" FontSize="18" Margin="0 20 0 0" Text="{Binding Toilet}">
+                                        <ComboBoxItem Content="Любой"/>
+                                        <ComboBoxItem Content="Раздельный"/>
+                                        <ComboBoxItem Content="Совмещенный"/>
+                                        <ComboBoxItem Content="Два"/>
+                                        <ComboBoxItem Content="Три"/>
+                                    </ComboBox>
+
+                                    <ComboBox x:Name="BalconyTextBox" Foreground="White" Style="{StaticResource MaterialDesignFilledComboBox}" 
+                                  materialDesign:HintAssist.Hint="Балкон" Width="200" FontSize="18" Margin="0 20 0 0" Text="{Binding Balcony}">
+                                        <ComboBoxItem Content="Любой"/>
+                                        <ComboBoxItem Content="Есть"/>
+                                        <ComboBoxItem Content="Нет"/>
+                                        <ComboBoxItem Content="Лоджия"/>
+                                        <ComboBoxItem Content="Два"/>
+                                    </ComboBox>
+
+                                    <TextBox Margin="0 20 0 0" x:Name="FloorTextBox" Width="200" FontSize="18" materialDesign:HintAssist.Hint="Этаж" Foreground="White"
+                         CaretBrush="White" Style="{StaticResource MaterialDesignFilledTextBox}" Text="{Binding Floor}">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="PreviewTextInput">
+                                                <ei:CallMethodAction TargetObject="{Binding}" MethodName="IntValidationTextBox"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </TextBox>
+
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 46 0 0">
+                                        <TextBox materialDesign:HintAssist.Hint="От" Foreground="White" CaretBrush="White" Width="80" FontSize="18" Text="{Binding PriceFrom}">
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="PreviewTextInput">
+                                                    <ei:CallMethodAction TargetObject="{Binding}" MethodName="IntValidationTextBox"/>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </TextBox>
+                                        <TextBlock Text="-" FontSize="18" Foreground="White" VerticalAlignment="Center" Margin="5 0 5 0"/>
+                                        <TextBox materialDesign:HintAssist.Hint="До" Foreground="White" CaretBrush="White" Width="80" FontSize="18" Text="{Binding PriceTo}">
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="PreviewTextInput">
+                                                    <ei:CallMethodAction TargetObject="{Binding}" MethodName="IntValidationTextBox"/>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </TextBox>
+                                        <TextBlock Text="$" FontSize="18" Foreground="White" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </StackPanel>
+
+
+                            </StackPanel>
+
+                            <Button Content="Применить" Grid.Column="1" Style="{StaticResource MaterialDesignFlatMidBgButton}" BorderThickness="0" FontSize="18" 
+                    Background="#00CC66" Foreground="White" HorizontalAlignment="Center" materialDesign:ButtonAssist.CornerRadius="8" Margin="0 20 0 40"
+                    Command="{Binding FilterFlatsCommand}" CommandParameter="{Binding ElementName=User}"/>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Border>
+
+                <StackPanel Orientation="Horizontal" Panel.ZIndex="2" Background="#2A2C2D">
+                    <materialDesign:ColorZone Padding="8 4 8 4" CornerRadius="2" Margin="10 0 0 0" VerticalAlignment="Center" 
+                                          HorizontalAlignment="Left" Background="#303233">
+                        <StackPanel Orientation="Horizontal" materialDesign:RippleAssist.IsCentered="True">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Button Style="{StaticResource MaterialDesignToolButton}" Command="{Binding SearchCommand}">
+                                    <materialDesign:PackIcon Kind="Search" Opacity=".56" Foreground="White"/>
+                                </Button>
+                                <TextBox Grid.Column="1" Margin="8 0 0 0" materialDesign:HintAssist.Hint="Поиск" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" 
+                                             BorderThickness="0" Width="200" VerticalAlignment="Center" Foreground="White" CaretBrush="White" Text="{Binding SearchText}">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="PreviewTextInput">
+                                            <ei:CallMethodAction TargetObject="{Binding}" MethodName="SearchValidationTextBox"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </TextBox>
+                            </Grid>
+                        </StackPanel>
+                    </materialDesign:ColorZone>
+
+                    <Button Style="{StaticResource MaterialDesignToolButton}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="12 0 0 0" Command="{Binding FilterPanelCommand}" CommandParameter="{Binding ElementName=FilterPanel}">
+                        <materialDesign:PackIcon Kind="Filter" Opacity=".56" Foreground="White"/>
+                    </Button>
+                </StackPanel>
+
+                <StackPanel Grid.Column="4" Margin="0 10 10 0" HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Horizontal" FlowDirection="RightToLeft" Panel.ZIndex="4">
                     <Button x:Name="btnClose" Style="{StaticResource ResourceKey=CloseAppStyle}" 
                             Command="{Binding CloseAppCommand}" CommandParameter="{Binding ElementName=User}"/>
                     <Button x:Name="btnRestore" Style="{StaticResource ResourceKey=MaximizeAppStyle}" Margin="10, 0, 0, 0" 

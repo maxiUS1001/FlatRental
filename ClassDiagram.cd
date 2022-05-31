@@ -1,0 +1,496 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="FlatRental.DataModel.Flat">
+    <Position X="55.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgBAAUAAAQAgARgIAAAAAAAACAAAAhAAAAAAAQAAAAA=</HashCode>
+      <FileName>DataModel\Flat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlatRental.DataModel.FLAT_RENTALContext">
+    <Position X="51.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAGAAAQAQBAAAAAAAAAAAGgAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>DataModel\FLAT_RENTALContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlatRental.DataModel.Lease">
+    <Position X="51.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAEAggABAAAgAAAAAAAEAAgAA=</HashCode>
+      <FileName>DataModel\Lease.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlatRental.DataModel.Review">
+    <Position X="55.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAQAEAgAAAAAAgAAEAAACAAAAAA=</HashCode>
+      <FileName>DataModel\Review.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlatRental.DataModel.Role">
+    <Position X="53.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACIAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataModel\Role.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlatRental.DataModel.User">
+    <Position X="53.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAEAAAQAwACAAAAAACAAAQAAAAAAA=</HashCode>
+      <FileName>DataModel\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlatRental.Model.Repository.FlatRepository" BaseTypeListCollapsed="true">
+    <Position X="29.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAQEEAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Repository\FlatRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FlatRental.Model.Repository.LeaseRepository" BaseTypeListCollapsed="true">
+    <Position X="35" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAQEEAIEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Repository\LeaseRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FlatRental.Model.Repository.ReviewRepository" BaseTypeListCollapsed="true">
+    <Position X="31.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAQEEAAEAAAAAAAAACAAA=</HashCode>
+      <FileName>Model\Repository\ReviewRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FlatRental.Model.Repository.UnitOfWork">
+    <Position X="33.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAABGAgQAAQAAAAAAAAAAAACAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Model\Repository\UnitOfWork.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlatRental.Model.Repository.UserRepository" BaseTypeListCollapsed="true">
+    <Position X="33.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAIAAAAAAAAAAAAAAAAAAAQEEAgEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Repository\UserRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FlatRental.Model.RelayCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="38" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAQAAEAEAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Command.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FlatRental.Model.CurrentUser" Collapsed="true">
+    <Position X="46.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAACAQAAAAAAAABABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\CurrentUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlatRental.Model.FilterPanelAnimation" Collapsed="true">
+    <Position X="45" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAABAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\FilterPanelAnimation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlatRental.Model.FlatLease" Collapsed="true">
+    <Position X="38" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\FlatLease.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlatRental.Model.ObservableObject" Collapsed="true">
+    <Position X="27.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\ObservableObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="FlatRental.Model.EmptyStringValidationRule" Collapsed="true">
+    <Position X="43.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAACAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\RegexValidationRule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlatRental.Model.PositiveIntValidationRule" Collapsed="true">
+    <Position X="45" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAACAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\RegexValidationRule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlatRental.Model.FloatValueValidationRule" Collapsed="true">
+    <Position X="45" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAACAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\RegexValidationRule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlatRental.Model.EmailValidationRule" Collapsed="true">
+    <Position X="41.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAACAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\RegexValidationRule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlatRental.Model.NameValidationRule" Collapsed="true">
+    <Position X="39.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAACAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\RegexValidationRule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlatRental.Model.TelephoneValidationRule" Collapsed="true">
+    <Position X="48.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAACAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\RegexValidationRule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlatRental.Model.PasswordValidationRule" Collapsed="true">
+    <Position X="43.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAACAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\RegexValidationRule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlatRental.Model.UserLease" Collapsed="true">
+    <Position X="41.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\UserLease.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlatRental.Model.UserReview" Collapsed="true">
+    <Position X="46.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>Model\UserReview.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlatRental.Model.Validation" Collapsed="true">
+    <Position X="38" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Validation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlatRental.Styles.BindablePasswordBox" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="45" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAQgAAAAAAAAAAAAAAAAAAAAABACAAAAAAIAAAA=</HashCode>
+      <FileName>Styles\BindablePasswordBox.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FlatRental.View.AdminPages.AddFlatWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="38" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\AdminPages\AddFlatWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FlatRental.View.AdminPages.EditFlatWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="38" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\AdminPages\EditFlatWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FlatRental.View.AdminPages.EditOrderWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="39.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\AdminPages\EditOrderWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FlatRental.View.AdminPages.FlatsBDPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="43.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\AdminPages\FlatsBDPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FlatRental.View.AdminPages.OrdersPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="41.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\AdminPages\OrdersPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FlatRental.View.AdminPages.ReviewPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="43.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\AdminPages\ReviewPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FlatRental.View.UserPages.AllFlatsPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="41.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\UserPages\AllFlatsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FlatRental.View.UserPages.FlatPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="39.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\UserPages\FlatPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FlatRental.View.UserPages.RentalFormWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="39.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\UserPages\RentalFormWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FlatRental.View.UserPages.UserOrders" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="43.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\UserPages\UserOrders.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FlatRental.AdminWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="39.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\AdminWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FlatRental.App" Collapsed="true">
+    <Position X="43.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlatRental.View.CustomMessageBox" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="48.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAIAAAAQAAAAAAAAAAEAQAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\CustomMessageBox.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FlatRental.View.LoginWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="38" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\LoginWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FlatRental.View.ProfilePage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="46.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\ProfilePage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FlatRental.View.RegisterWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="48.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\RegisterWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FlatRental.View.UserWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="48.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\UserWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FlatRental.ViewModel.AddFlatFormVM" Collapsed="true">
+    <Position X="22" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AwFABUAAAQCgARoMAgCAQAAACACAQBEBAAAIAQBAABE=</HashCode>
+      <FileName>ViewModel\AddFlatFormVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlatRental.ViewModel.AllFlatsVM">
+    <Position X="28.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAgAAAAABQABAAAAAAAAEAACAAAA=</HashCode>
+      <FileName>ViewModel\AllFlatsVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlatRental.ViewModel.EditFlatsVM" Collapsed="true">
+    <Position X="33.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAACAAIBAQgAIAAABIABAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>ViewModel\EditFlatsVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlatRental.ViewModel.EditOrderVM" Collapsed="true">
+    <Position X="1.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQEAAAACIAAAAAAAAgAAAAEAJAAgQAAAADAIAAAAAAA=</HashCode>
+      <FileName>ViewModel\EditOrderVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlatRental.ViewModel.FlatPageVM" Collapsed="true">
+    <Position X="6.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQEAAAAgAAAAIEBgAAAEAAAAAAAAAAAACAAAABABA=</HashCode>
+      <FileName>ViewModel\FlatPageVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlatRental.ViewModel.LoginWindowVM" Collapsed="true">
+    <Position X="10.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAGAIAAAAAgAAAAAAAAgAAAACAAAAAACAAAE=</HashCode>
+      <FileName>ViewModel\LoginWindowVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlatRental.ViewModel.MainAdminWindowVM" Collapsed="true">
+    <Position X="15.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AwBAGcARCgCCrRqKQhDAQBgACBAUAFEBAAJQAAJKQJI=</HashCode>
+      <FileName>ViewModel\MainAdminWindowVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlatRental.ViewModel.MainUserWindowVM" Collapsed="true">
+    <Position X="19.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AwBgGcABAgGArRqKQhDAQAEACBAEQVEBAANEAAJKABI=</HashCode>
+      <FileName>ViewModel\MainUserWindowVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlatRental.ViewModel.OrdersVM">
+    <Position X="24" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgIAAAAEAAAAIgBAAAAAIACAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>ViewModel\OrdersVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlatRental.ViewModel.ProfilePageVM">
+    <Position X="26.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABIAAAAAAAAEAAAiAAQBQBAAAAAAAIBJAQIAAAAAA=</HashCode>
+      <FileName>ViewModel\ProfilePageVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlatRental.ViewModel.RegisterWindowVM">
+    <Position X="31" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBIAAAAAAACAAAAgAAQAQAAAAAAAACBAAQIQAAAAA=</HashCode>
+      <FileName>ViewModel\RegisterWindowVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlatRental.ViewModel.RentalFormVM" Collapsed="true">
+    <Position X="35.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAEAAgAAgAAAAAAQAAAABAAAAAIAQAAAAA=</HashCode>
+      <FileName>ViewModel\RentalFormVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlatRental.ViewModel.ReviewPageVM" Collapsed="true">
+    <Position X="4" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAEBgAAAAAAIAAAABAAgAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\ReviewPageVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlatRental.ViewModel.UpdateFlatsVM" Collapsed="true">
+    <Position X="8.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AwBAAUAAAQCgARoMAgCAQAAACACASBEBAAAIARBAABE=</HashCode>
+      <FileName>ViewModel\UpdateFlatsVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlatRental.ViewModel.UpdateOrderVM" Collapsed="true">
+    <Position X="13" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAJAIAAAAAAAAgABAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>ViewModel\UpdateOrderVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlatRental.ViewModel.UserOrdersVM" Collapsed="true">
+    <Position X="17.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAIAgAAAAAAAAAAAAAAAAAgAAAAAEA=</HashCode>
+      <FileName>ViewModel\UserOrdersVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="FlatRental.Model.Repository.ILeaseRepository" Collapsed="true">
+    <Position X="5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Repository\ILeaseRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="FlatRental.Model.Repository.IRepository&lt;T&gt;" Collapsed="true">
+    <Position X="2.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAEEAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Repository\IRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="FlatRental.Model.Repository.IReviewRepository" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Model\Repository\IReviewRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="FlatRental.Model.Repository.IUserRepository" Collapsed="true">
+    <Position X="2.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Repository\IUserRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="FlatRental.Model.Roles" Collapsed="true">
+    <Position X="41.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Roles.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="FlatRental.View.MessageType" Collapsed="true">
+    <Position X="39.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAABAAAgAAAAAAIAAAAEAAAAA=</HashCode>
+      <FileName>View\CustomMessageBox.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="FlatRental.View.MessageButtons" Collapsed="true">
+    <Position X="38" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAABAAAAQAA=</HashCode>
+      <FileName>View\CustomMessageBox.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -18,7 +18,7 @@ namespace FlatRental.ViewModel
     {
         private UnitOfWork _unitOfWork;
 
-        public LoginWindowVM() 
+        public LoginWindowVM()
         {
             _unitOfWork = new UnitOfWork();
         }
@@ -80,7 +80,7 @@ namespace FlatRental.ViewModel
                         }
                         else
                         {
-                            var result = new CustomMessageBox("Проверьте данные",
+                            var result = new CustomMessageBox("Ошибка входа",
                                         MessageType.Error,
                                         MessageButtons.Ok).ShowDialog();
                         }
